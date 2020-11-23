@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const compression = require('compression');
+const consola = require('consola');
 
 app.use(compression());
 
@@ -17,4 +18,4 @@ if (process.env.NODE_ENV != 'production') {
 
 app.get('*', (req, res) => res.sendFile(__dirname + '/init/index.html'));
 
-app.listen(8080, () => console.log("I'm listening."));
+app.listen(8080, () => consola.success("Server Listening"));

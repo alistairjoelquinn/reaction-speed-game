@@ -18,6 +18,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "compression": "^1.7.4",
+    "consola": "^2.15.0",
     "css-loader": "^5.0.1",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.12.4",
@@ -38,5 +39,8 @@
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-dev-middleware": "^3.7.2"
+  },
+  "devDependencies": {
+    "webpackbar": "^5.0.0-3"
   }
 }
