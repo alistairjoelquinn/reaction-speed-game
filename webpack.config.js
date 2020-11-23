@@ -24,13 +24,17 @@ const conf = {
                 query: {
                     presets: ['@babel/preset-react', '@babel/preset-env']
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
             }
         ]
     }
 };
 
 if (require.main == module) {
-    webpack(conf, function(err, info) {
+    webpack(conf, function (err, info) {
         if (err) {
             console.log(err);
         }
