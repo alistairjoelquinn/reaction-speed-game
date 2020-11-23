@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "set": "node init/bundleServer.js",
-    "start": "node init/bundleServer.js & node ."
+    "start": "node init/bundleServer.js & nodemon index.js"
   },
   "keywords": [],
   "author": "Alistair Quinn",
