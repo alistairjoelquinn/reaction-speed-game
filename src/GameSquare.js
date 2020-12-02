@@ -1,16 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import MiddleButton from './MiddleButton';
+
+const GameAreaStyles = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
 const GameStyles = styled.div`
+    position: absolute;
     height: 60vh;
     width: 50vw;
-    margin-top: 10vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 1.3rem;
-    .game-item {
-        padding: 10px;
+    .game-item:hover {
+        opacity: 0.8;
     }
     .item-one {
         background-color: var(--green);
@@ -28,12 +36,15 @@ const GameStyles = styled.div`
 
 const GameSquare = () => {
     return (
-        <GameStyles>
-            <div className="game-item item-one"></div>
-            <div className="game-item item-two"></div>
-            <div className="game-item item-three"></div>
-            <div className="game-item item-four"></div>
-        </GameStyles>
+        <GameAreaStyles>
+            <GameStyles>
+                <div className="game-item item-one"></div>
+                <div className="game-item item-two"></div>
+                <div className="game-item item-three"></div>
+                <div className="game-item item-four"></div>
+            </GameStyles>
+            <MiddleButton />
+        </GameAreaStyles>
     );
 };
 

@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     font-size: 2rem;
+    overflow: hidden;
   }
   button {
     background: var(--white);
