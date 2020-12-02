@@ -23,7 +23,7 @@ const AppStyles = styled.div`
 export default function App() {
     return (
         <AppStyles>
-            <div>Reaction Speed Game</div>
+            <div>React App / Styled Components / Node Server</div>
         </AppStyles>
     );
 };
