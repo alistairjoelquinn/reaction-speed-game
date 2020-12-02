@@ -3,8 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MiddleButtonStyles = styled.div`
-    position: absolute;
-    top: 40vh;
+    z-index: 1;
     .circle-button {
         height: 15rem;
         width: 15rem;
