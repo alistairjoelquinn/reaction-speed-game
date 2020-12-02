@@ -3,8 +3,9 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   :root {
     --orange: #F39237;
-    --pink: #BF1363
+    --pink: #BF1363;
     --blue: #0E79B2;
+    --green: #32E875;
     --black: #191923;
     --white: #FBFEF9;
   }

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import GameSquare from './GameSquare';
 
 const Game = () => {
-    const [inPlay, setInPlay] = useState(false)
+    const [inPlay, setInPlay] = useState(true)
 
     return (
         <div>
