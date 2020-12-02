@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import 'normalize.css';
 
+import GameSquare from './GameSquare';
+import GlobalStyles from './styles/GlobalStyles';
+import Typography from './styles/Typography';
+
 const AppStyles = styled.div`
     display: flex;
     flex-direction: column;
@@ -12,8 +16,10 @@ const AppStyles = styled.div`
     width: 100vw;
     background-color: dodgerblue;
     color: antiquewhite;
-    div {
-        font-family: Arial, Helvetica, sans-serif;
+    div.title {
+        position: absolute;
+        top: 20px;
+        font-family: FrenchFries;
         font-size: 40px;
         font-weight: bold;
         -webkit-text-stroke: 1px tomato;
@@ -23,7 +29,10 @@ const AppStyles = styled.div`
 export default function App() {
     return (
         <AppStyles>
-            <div>React App / Styled Components / Node Server</div>
+            <GlobalStyles />
+            <Typography />
+            <div className="title">Reaction Speed Game</div>
+            <GameSquare />
         </AppStyles>
     );
 };
