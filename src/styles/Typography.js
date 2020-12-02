@@ -9,7 +9,7 @@ const Typography = createGlobalStyle`
   }
   html {
     font-family: FrenchFries, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: var(--black);
+    color: var(--white);
   }
   p, li {
     letter-spacing: 0.5px;

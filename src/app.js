@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import 'normalize.css';
 
-import GameSquare from './GameSquare';
+import Game from './Game';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 
@@ -14,15 +14,14 @@ const AppStyles = styled.div`
     margin: 0;
     height: 100vh;
     width: 100vw;
-    background-color: dodgerblue;
-    color: antiquewhite;
+    background-color: var(--black);
     div.title {
         position: absolute;
         top: 20px;
-        font-family: FrenchFries;
-        font-size: 40px;
+        font-size: 70px;
         font-weight: bold;
-        -webkit-text-stroke: 1px tomato;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--orange);
     }
 `;
 
@@ -32,7 +31,7 @@ export default function App() {
             <GlobalStyles />
             <Typography />
             <div className="title">Reaction Speed Game</div>
-            <GameSquare />
+            <Game />
         </AppStyles>
     );
 };
