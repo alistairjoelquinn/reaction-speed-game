@@ -13,7 +13,6 @@ const InstructionStyles = styled.div`
     background-color: var(--white);
     color: var(--black);
     font-size: 2.5rem;
-    /* -webkit-text-stroke: 2px black; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +38,9 @@ const Instructions = () => {
             <p>
                 Once that happens, the first person to hit the space bar gets the point! Be careful though, if you hit the spacebar before the light turns red you'll be disqualified from the round! First to 5 points wins the game...
             </p>
-            <button onClick={() => dispatch(startGame())}>Start</button>
+            <button onClick={() => dispatch(startGame())}>
+                Start
+            </button>
         </InstructionStyles>
     );
 };

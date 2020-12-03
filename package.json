@@ -1,10 +1,8 @@
 {
   "name": "reaction_speed_game",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "set": "node init/bundleServer.js",
     "start": "node init/bundleServer.js & nodemon index.js"
   },
   "keywords": [],
