@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     --pink: #BF1363;
     --blue: #0E79B2;
     --green: #24D648;
+    --yellow: #F0F66E;
     --black: #191923;
     --white: #FBFEF9;
   }

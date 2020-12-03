@@ -9,7 +9,7 @@ const MiddleButtonStyles = styled.div`
         width: 15rem;
         border-radius: 7.5rem;
         border: 2px solid var(--black);
-        background-color: var(--white);
+        background-color: var(--yellow);
         display: flex;
         align-items: center;
         justify-content: center;

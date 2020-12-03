@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import GameSquare from './GameSquare';
+import Instructions from './Instructions';
 
 const Game = () => {
-    const [inPlay, setInPlay] = useState(true)
+    const inPlay = useSelector(state => state.inPlay);
+    console.log('inPlay: ', inPlay);
 
     return (
         <div>
             <div>
-                {inPlay || <button onClick={() => setInPlay(!inPlay)}>Get Started</button>}
+                {inPlay || <Instructions />}
                 {inPlay && <GameSquare />}
             </div>
         </div>
