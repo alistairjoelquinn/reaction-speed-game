@@ -17,7 +17,7 @@ const GameStyles = styled.div`
     --corners: 7rem;
     background-color: lightgrey;
     padding: 10px;
-    border-radius: var(--corners);
+    border-radius: 8rem;
     position: absolute;
     height: 60vh;
     width: 50vw;
