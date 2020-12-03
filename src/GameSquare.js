@@ -8,10 +8,16 @@ const GameAreaStyles = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    .game-container {
+        background-color: lightgray;
+    }
 `;
 
 const GameStyles = styled.div`
     --corners: 7rem;
+    background-color: lightgrey;
+    padding: 10px;
+    border-radius: var(--corners);
     position: absolute;
     height: 60vh;
     width: 50vw;
@@ -20,8 +26,11 @@ const GameStyles = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 1.3rem;
+    .game-item {
+        border: 2px solid var(--black);
+    }
     .game-item:hover {
-        opacity: 0.8;
+        opacity: 0.6;
     }
     .item-one {
         background-color: var(--green);
