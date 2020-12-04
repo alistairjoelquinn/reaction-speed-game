@@ -5,7 +5,7 @@ const consola = require('consola');
 
 app.use(compression());
 
-if (process.env.NODE_ENV != 'production') {
+if (process.env.NODE_ENV !== 'production') {
     app.use(
         '/output.js',
         require('http-proxy-middleware')({

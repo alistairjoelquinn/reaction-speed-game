@@ -1,5 +1,4 @@
 const initialState = {
-    connected: "It's working mate",
     inPlay: false
 };
 

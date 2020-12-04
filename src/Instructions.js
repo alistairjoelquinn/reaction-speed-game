@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { startGame } from '../store/actions';
+import { startGame } from '../store/game/actions';
 
 const InstructionStyles = styled.div`
     width: 50vw;

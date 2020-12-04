@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
 
 import App from './app';
-import Reducer from '../store/reducer';
+import GameReducer from '../store/game/reducer';
+import SocketReducer from '../store/socket/reducer';
+
+const rootReducer = combineReducers({
+    game: GameReducer,
+    socket: SocketReducer
+});
 
 const store = createStore(
-    Reducer, composeWithDevTools(
+    rootReducer, composeWithDevTools(
         applyMiddleware(ReduxThunk)
     )
 );
