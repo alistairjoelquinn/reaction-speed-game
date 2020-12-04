@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
 
+import { init } from './socket';
+
 import App from './app';
 import GameReducer from '../store/game/reducer';
 import SocketReducer from '../store/socket/reducer';
@@ -20,6 +22,7 @@ const store = createStore(
     )
 );
 
+init(store);
 const elem = (
     <Provider store={store}>
         <App />
