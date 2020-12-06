@@ -35,9 +35,9 @@ io.on('connection', (socket) => {
     };
 
     socket.on('colorSelected', ({ userId, userColor }) => {
-        console.log('userId, userColor: ', userId, userColor);
         currentUsers[userId] = userColor;
         consola.success(currentUsers);
+        io.to(socket.id).emit("playerColor", userColor);
     })
 
 });

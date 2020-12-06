@@ -24,5 +24,11 @@ export default (state = initialState, action) => {
             id: action.id
         }
     }
+    if (action.type === 'PLAYER_COLOR_RECEIVED') {
+        return {
+            ...state,
+            userColor: action.color
+        }
+    }
     return state;
 }

@@ -22,3 +22,12 @@ export const storePlayerId = id => {
         });
     }
 }
+
+export const storePlayerColor = color => {
+    return dispatch => {
+        dispatch({
+            type: "PLAYER_COLOR_RECEIVED",
+            color
+        });
+    }
+}
