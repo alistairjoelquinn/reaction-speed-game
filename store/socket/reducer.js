@@ -1,7 +1,8 @@
 const initialState = {
-    connected: 'Its almost mate - SOCKETSS',
+    connected: 'Not yet connected',
     gameFull: false,
     id: null,
+    userColor: null
 };
 
 export default (state = initialState, action) => {

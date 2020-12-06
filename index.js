@@ -34,8 +34,10 @@ io.on('connection', (socket) => {
         consola.success(currentUsers);
     };
 
-    socket.on('newPlayer', () => {
-
+    socket.on('colorSelected', ({ userId, userColor }) => {
+        console.log('userId, userColor: ', userId, userColor);
+        currentUsers[userId] = userColor;
+        consola.success(currentUsers);
     })
 
 });

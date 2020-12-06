@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
+import { socket } from './socket';
 import MiddleButton from './MiddleButton';
 
 const GameAreaStyles = styled.div`
@@ -51,13 +53,35 @@ const GameStyles = styled.div`
 `;
 
 const GameSquare = () => {
+    const userId = useSelector(state => state.socket?.id);
+
     return (
         <GameAreaStyles>
             <GameStyles>
-                <div className="game-item item-one"></div>
-                <div className="game-item item-two"></div>
-                <div className="game-item item-three"></div>
-                <div className="game-item item-four"></div>
+                <div
+                    className="game-item item-one"
+                    onClick={() => {
+                        socket.emit('colorSelected', { userId, userColor: 'green' })
+                    }}
+                ></div>
+                <div
+                    className="game-item item-two"
+                    onClick={() => {
+                        socket.emit('colorSelected', { userId, userColor: 'pink' })
+                    }}
+                ></div>
+                <div
+                    className="game-item item-three"
+                    onClick={() => {
+                        socket.emit('colorSelected', { userId, userColor: 'blue' })
+                    }}
+                ></div>
+                <div
+                    className="game-item item-four"
+                    onClick={() => {
+                        socket.emit('colorSelected', { userId, userColor: 'orange' })
+                    }}
+                ></div>
             </GameStyles>
             <MiddleButton />
         </GameAreaStyles>
