@@ -5,3 +5,20 @@ export const socketConnected = () => {
         });
     }
 }
+
+export const gameFull = () => {
+    return dispatch => {
+        dispatch({
+            type: "GAME_FULL"
+        });
+    }
+}
+
+export const storePlayerId = id => {
+    return dispatch => {
+        dispatch({
+            type: "PLAYER_ID_RECEIVED",
+            id
+        });
+    }
+}

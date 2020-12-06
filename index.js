@@ -26,7 +26,7 @@ const currentUsers = {};
 
 io.on('connection', (socket) => {
     if (Object.keys(currentUsers).length >= 4) {
-        io.to(socket.id).emit("game_full");
+        io.to(socket.id).emit("game_full", true);
         return;
     } else {
         currentUsers[socket.id] = null;
