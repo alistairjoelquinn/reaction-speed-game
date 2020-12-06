@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { startGame } from '../store/game/actions';
@@ -28,20 +28,32 @@ const InstructionStyles = styled.div`
 `;
 
 const Instructions = () => {
+    const gameFull = useSelector(state => state.socket?.gameFull);
     const dispatch = useDispatch();
 
     return (
-        <InstructionStyles>
-            <p>
-                This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red, a noise will play at the same time.
-            </p>
-            <p>
-                Once that happens, the first person to hit the space bar gets the point! Be careful though, if you hit the spacebar before the light turns red you'll be disqualified from the round! First to 5 points wins the game...
-            </p>
-            <button onClick={() => dispatch(startGame())}>
-                Start
-            </button>
-        </InstructionStyles>
+        <>
+            <InstructionStyles>
+                {!gameFull ?
+                    <>
+                        <p>
+                            This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red, a noise will play at the same time.
+                        </p>
+                        <p>
+                            Once that happens, the first person to hit the space bar gets the point! Be careful though, if you hit the spacebar before the light turns red you'll be disqualified from the round! First to 5 points wins the game...
+                        </p>
+                        <button onClick={() => dispatch(startGame())}>
+                            Start
+                        </button>
+                    </>
+                    :
+                    <>
+                        <p>This game is already full, there is no more space for new players!</p>
+                        <p>Snooze ya lose sucker....</p>
+                    </>
+                }
+            </InstructionStyles>
+        </>
     );
 };
 

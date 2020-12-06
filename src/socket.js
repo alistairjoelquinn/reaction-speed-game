@@ -1,6 +1,6 @@
 import * as io from 'socket.io-client';
 
-import { socketConnected, storePlayerId } from '../store/socket/actions';
+import { gameFull, socketConnected, storePlayerId } from '../store/socket/actions';
 
 export let socket;
 
