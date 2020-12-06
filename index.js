@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const compression = require('compression');
-const cookieSession = require('cookie-session');
 const server = require('http').Server(app);
 const io = require('socket.io')(server, { origins: 'localhost:8080' });
 const consola = require('consola');
@@ -26,11 +25,17 @@ server.listen(8080, () => consola.success("Server Listening"));
 const currentUsers = {};
 
 io.on('connection', (socket) => {
-    consola.info(Object.keys(currentUsers).length);
-
-    if (Object.keys(currentUsers).length <= 4) {
+    if (Object.keys(currentUsers).length >= 4) {
+        io.to(socket.id).emit("game_full");
+        return;
+    } else {
         currentUsers[socket.id] = null;
+        io.to(socket.id).emit("playerId", socket.id);
         consola.success(currentUsers);
-    }
+    };
+
+    socket.on('newPlayer', () => {
+
+    })
 
 });
