@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { startGame } from '../store/game/actions';
 
-const InstructionStyles = styled.div`
+const UserInfoStyles = styled.div`
     width: 50vw;
     height: 50vh;
     border: 5px solid var(--orange);
@@ -27,14 +27,17 @@ const InstructionStyles = styled.div`
     }
 `;
 
-const Instructions = () => {
+const UserInfo = ({ color }) => {
     const gameFull = useSelector(state => state.socket?.gameFull);
     const dispatch = useDispatch();
 
     return (
         <>
-            <InstructionStyles>
-                {!gameFull ?
+            <UserInfoStyles>
+                {color && <p style={{ fontSize: '60px' }}>
+                    You selected {color} as your color!
+                </p>}
+                {!color && (!gameFull ?
                     <>
                         <p>
                             This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red, a noise will play at the same time.
@@ -50,11 +53,11 @@ const Instructions = () => {
                     <>
                         <p>This game is already full, there is no more space for new players!</p>
                         <p>Snooze ya lose sucker....</p>
-                    </>
+                    </>)
                 }
-            </InstructionStyles>
+            </UserInfoStyles>
         </>
     );
 };
 
-export default Instructions;
+export default UserInfo;

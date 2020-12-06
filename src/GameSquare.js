@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import { socket } from './socket';
 import MiddleButton from './MiddleButton';
+import UserInfo from './UserInfo';
 
 const GameAreaStyles = styled.div`
     margin-top: 60px;
@@ -54,6 +55,20 @@ const GameStyles = styled.div`
 
 const GameSquare = () => {
     const userId = useSelector(state => state.socket?.id);
+    const userColor = useSelector(state => state.socket?.userColor);
+    const [displayUserColor, setDisplayUserColor] = useState(false)
+
+    useEffect(
+        () => {
+            if (userColor) {
+                setDisplayUserColor(true);
+                setTimeout(() => {
+                    setDisplayUserColor(false);
+                }, 2000);
+            }
+        },
+        [userColor]
+    );
 
     return (
         <GameAreaStyles>
@@ -84,6 +99,19 @@ const GameSquare = () => {
                 ></div>
             </GameStyles>
             <MiddleButton />
+            {displayUserColor &&
+                <div style={{
+                    position: 'absolute',
+                    width: '100vw',
+                    height: '100vh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 5
+                }}>
+                    <UserInfo color={userColor} />
+                </div>
+            }
         </GameAreaStyles>
     );
 };
