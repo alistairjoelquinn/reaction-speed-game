@@ -35,23 +35,29 @@ const GameStyles = styled.div`
     .game-item:hover {
         opacity: 0.6;
     }
-    .item-one {
+    .green {
         background-color: var(--green);
         border-top-left-radius: var(--corners);
     }
-    .item-two {
+    .pink {
         background-color: var(--pink);
         border-top-right-radius: var(--corners);
     }
-    .item-three {
+    .blue {
         background-color: var(--blue);
         border-bottom-left-radius: var(--corners);
     }
-    .item-four {
+    .orange {
         background-color: var(--orange);
         border-bottom-right-radius: var(--corners);
     }
 `;
+
+const DisplayUserColorStyles = styled.div`
+
+`;
+
+const gameColors = ['green', 'pink', 'blue', 'orange'];
 
 const GameSquare = () => {
     const userId = useSelector(state => state.socket?.id);
@@ -73,30 +79,14 @@ const GameSquare = () => {
     return (
         <GameAreaStyles>
             <GameStyles>
-                <div
-                    className="game-item item-one"
-                    onClick={() => {
-                        socket.emit('colorSelected', { userId, userColor: 'green' })
-                    }}
-                ></div>
-                <div
-                    className="game-item item-two"
-                    onClick={() => {
-                        socket.emit('colorSelected', { userId, userColor: 'pink' })
-                    }}
-                ></div>
-                <div
-                    className="game-item item-three"
-                    onClick={() => {
-                        socket.emit('colorSelected', { userId, userColor: 'blue' })
-                    }}
-                ></div>
-                <div
-                    className="game-item item-four"
-                    onClick={() => {
-                        socket.emit('colorSelected', { userId, userColor: 'orange' })
-                    }}
-                ></div>
+                {gameColors.map(color => (
+                    <div
+                        className={`game-item ${color}`}
+                        onClick={() => {
+                            socket.emit('colorSelected', { userId, userColor: color })
+                        }}
+                    ></div>
+                ))}
             </GameStyles>
             <MiddleButton />
             {displayUserColor &&
