@@ -33,7 +33,6 @@ export const storePlayerColor = color => {
 }
 
 export const storeWelcomeMessage = msg => {
-    console.log('msg: ', msg);
     return dispatch => {
         dispatch({
             type: "WELCOME_MESSAGE_RECEIVED",

@@ -9,7 +9,7 @@ const Game = () => {
 
     return (
         <div>
-            {inPlay || <UserInfo />}
+            {inPlay || <UserInfo instructions />}
             {inPlay && <GameSquare />}
         </div>
     );

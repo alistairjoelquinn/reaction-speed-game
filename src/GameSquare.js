@@ -11,7 +11,9 @@ const gameColors = ['green', 'pink', 'blue', 'orange'];
 const GameSquare = () => {
     const userId = useSelector(state => state.socket?.id);
     const userColor = useSelector(state => state.socket?.userColor);
+    const welcomeMessage = useSelector(state => state.socket?.welcomeMessage);
     const [displayUserColor, setDisplayUserColor] = useState(false)
+    const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true)
 
     useEffect(
         () => {
@@ -25,25 +27,39 @@ const GameSquare = () => {
         [userColor]
     );
 
-    return (
-        <GameAreaStyles>
-            <GameStyles>
-                {gameColors.map(color => (
-                    <div
-                        key={color}
-                        className={`game-item ${color}`}
-                        onClick={() => socket.emit('colorSelected', { userId, userColor: color })}
-                    ></div>
-                ))}
-            </GameStyles>
-            <MiddleButton />
-            {displayUserColor &&
-                <DisplayUserColorStyles>
-                    <UserInfo color={userColor} />
-                </DisplayUserColorStyles>
-            }
-        </GameAreaStyles>
-    );
+    const welcomeMessageHandler = () => {
+        setTimeout(() => {
+            setDisplayWelcomeMessage(false);
+        }, 2000);
+    }
+
+    useEffect(() => {
+        welcomeMessageHandler()
+    }, [welcomeMessage])
+
+    if (displayWelcomeMessage) {
+        return <UserInfo welcomeMessage={welcomeMessage} />
+    } else {
+        return (
+            <GameAreaStyles>
+                <GameStyles>
+                    {gameColors.map(color => (
+                        <div
+                            key={color}
+                            className={`game-item ${color}`}
+                            onClick={() => socket.emit('colorSelected', { userId, userColor: color })}
+                        ></div>
+                    ))}
+                </GameStyles>
+                <MiddleButton />
+                {displayUserColor &&
+                    <DisplayUserColorStyles>
+                        <UserInfo color={userColor} />
+                    </DisplayUserColorStyles>
+                }
+            </GameAreaStyles>
+        );
+    }
 };
 
 export default GameSquare;

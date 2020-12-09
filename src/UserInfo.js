@@ -27,7 +27,7 @@ const UserInfoStyles = styled.div`
     }
 `;
 
-const UserInfo = ({ color }) => {
+const UserInfo = ({ color, instructions, welcomeMessage }) => {
     const gameFull = useSelector(state => state.socket?.gameFull);
     const dispatch = useDispatch();
 
@@ -37,7 +37,7 @@ const UserInfo = ({ color }) => {
                 {color && <p style={{ fontSize: '60px' }}>
                     You selected {color} as your color!
                 </p>}
-                {!color && (!gameFull ?
+                {instructions && (!gameFull ?
                     <>
                         <p>
                             This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red, a noise will play at the same time.
@@ -54,6 +54,9 @@ const UserInfo = ({ color }) => {
                         <p>This game is already full, there is no more space for new players!</p>
                         <p>Snooze ya lose sucker....</p>
                     </>)
+                }
+                {welcomeMessage &&
+                    <p>{welcomeMessage}</p>
                 }
             </UserInfoStyles>
         </>
