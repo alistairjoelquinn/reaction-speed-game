@@ -45,6 +45,18 @@ export const GameStyles = styled.div`
         background-color: var(--orange);
         border-bottom-right-radius: var(--corners);
     }
+    .disabled {
+        color: black;
+        font-weight: bold;
+        font-size: 30px;
+        -webkit-text-stroke: 0.5px white;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .disabled:hover {
+        opacity: 1;
+    }
 `;
 
 export const DisplayUserColorStyles = styled.div`

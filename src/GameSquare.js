@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { socket } from './socket';
 import MiddleButton from './MiddleButton';
 import UserInfo from './UserInfo';
 import { DisplayUserColorStyles, GameAreaStyles, GameStyles } from './styles/GameSquareStyles';
+import SingleGameBox from './SingleGameBox';
 
 const gameColors = ['green', 'pink', 'blue', 'orange'];
 
@@ -45,11 +45,11 @@ const GameSquare = () => {
         <GameAreaStyles>
             <GameStyles>
                 {gameColors.map(color => (
-                    <div
+                    <SingleGameBox
                         key={color}
-                        className={`game-item ${color}`}
-                        onClick={() => socket.emit('colorSelected', { userId, userColor: color })}
-                    ></div>
+                        color={color}
+                        userId={userId}
+                    />
                 ))}
             </GameStyles>
             <MiddleButton />
