@@ -15,6 +15,7 @@ const MiddleButtonStyles = styled.div`
         justify-content: center;
         span {
             color: var(--black);
+            user-select: none;
         }
     }
     

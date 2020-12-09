@@ -44,6 +44,5 @@ io.on('connection', (socket) => {
         currentUsers[userId] = userColor;
         consola.success(currentUsers);
         io.to(socket.id).emit("playerColor", userColor);
-    })
-
+    });
 });

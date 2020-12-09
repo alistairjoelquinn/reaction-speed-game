@@ -25,6 +25,7 @@ export const GameStyles = styled.div`
     gap: 1.3rem;
     .game-item {
         border: 2px solid var(--black);
+        user-select: none;
     }
     .game-item:hover {
         opacity: 0.6;

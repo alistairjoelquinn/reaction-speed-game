@@ -22,6 +22,7 @@ const AppStyles = styled.div`
         font-weight: bold;
         color: transparent;
         -webkit-text-stroke: 1px var(--orange);
+        user-select: none;
     }
 `;
 
