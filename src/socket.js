@@ -1,6 +1,6 @@
 import * as io from 'socket.io-client';
 
-import { gameFull, socketConnected, storePlayerColor, storePlayerId } from '../store/socket/actions';
+import { gameFull, socketConnected, storePlayerColor, storePlayerId, storeWelcomeMessage } from '../store/socket/actions';
 
 export let socket;
 
@@ -11,5 +11,6 @@ export const init = store => {
         socket.on('game_full', () => store.dispatch(gameFull()));
         socket.on('playerId', id => store.dispatch(storePlayerId(id)));
         socket.on('playerColor', color => store.dispatch(storePlayerColor(color)));
+        socket.on('welcomeMessage', msg => store.dispatch(storeWelcomeMessage(msg)));
     }
 };

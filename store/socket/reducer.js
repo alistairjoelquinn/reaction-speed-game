@@ -2,7 +2,8 @@ const initialState = {
     connected: 'Not yet connected',
     gameFull: false,
     id: null,
-    userColor: null
+    userColor: null,
+    welcomeMessage: ''
 };
 
 export default (state = initialState, action) => {
@@ -28,6 +29,12 @@ export default (state = initialState, action) => {
         return {
             ...state,
             userColor: action.color
+        }
+    }
+    if (action.type === 'WELCOME_MESSAGE_RECEIVED') {
+        return {
+            ...state,
+            welcomeMessage: action.msg
         }
     }
     return state;

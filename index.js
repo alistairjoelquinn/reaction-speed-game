@@ -4,6 +4,7 @@ const compression = require('compression');
 const server = require('http').Server(app);
 const io = require('socket.io')(server, { origins: 'localhost:8080' });
 const consola = require('consola');
+const { selectedColorsCalculate } = require('./utils/selectedColorsCalculate');
 
 app.use(compression());
 
@@ -31,6 +32,10 @@ io.on('connection', (socket) => {
     } else {
         currentUsers[socket.id] = null;
         io.to(socket.id).emit("playerId", socket.id);
+        io.to(socket.id).emit("welcomeMessage", `
+            You are player number ${Object.keys(currentUsers).length}!
+            ${selectedColorsCalculate(currentUsers)}
+        `);
         consola.success(currentUsers);
     };
 

@@ -30,10 +30,9 @@ const GameSquare = () => {
             <GameStyles>
                 {gameColors.map(color => (
                     <div
+                        key={color}
                         className={`game-item ${color}`}
-                        onClick={() => {
-                            socket.emit('colorSelected', { userId, userColor: color })
-                        }}
+                        onClick={() => socket.emit('colorSelected', { userId, userColor: color })}
                     ></div>
                 ))}
             </GameStyles>
