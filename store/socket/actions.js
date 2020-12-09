@@ -40,3 +40,12 @@ export const storeWelcomeMessage = msg => {
         });
     }
 }
+
+export const storeTakenColors = colors => {
+    return dispatch => {
+        dispatch({
+            type: "TAKEN_COLORS_RECEIVED",
+            colors
+        });
+    }
+}

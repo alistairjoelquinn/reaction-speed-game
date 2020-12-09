@@ -39,27 +39,27 @@ const GameSquare = () => {
 
     if (displayWelcomeMessage) {
         return <UserInfo welcomeMessage={welcomeMessage} />
-    } else {
-        return (
-            <GameAreaStyles>
-                <GameStyles>
-                    {gameColors.map(color => (
-                        <div
-                            key={color}
-                            className={`game-item ${color}`}
-                            onClick={() => socket.emit('colorSelected', { userId, userColor: color })}
-                        ></div>
-                    ))}
-                </GameStyles>
-                <MiddleButton />
-                {displayUserColor &&
-                    <DisplayUserColorStyles>
-                        <UserInfo color={userColor} />
-                    </DisplayUserColorStyles>
-                }
-            </GameAreaStyles>
-        );
     }
+
+    return (
+        <GameAreaStyles>
+            <GameStyles>
+                {gameColors.map(color => (
+                    <div
+                        key={color}
+                        className={`game-item ${color}`}
+                        onClick={() => socket.emit('colorSelected', { userId, userColor: color })}
+                    ></div>
+                ))}
+            </GameStyles>
+            <MiddleButton />
+            {displayUserColor &&
+                <DisplayUserColorStyles>
+                    <UserInfo color={userColor} />
+                </DisplayUserColorStyles>
+            }
+        </GameAreaStyles>
+    );
 };
 
 export default GameSquare;

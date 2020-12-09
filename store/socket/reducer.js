@@ -3,7 +3,8 @@ const initialState = {
     gameFull: false,
     id: null,
     userColor: null,
-    welcomeMessage: ''
+    welcomeMessage: '',
+    takenColors: []
 };
 
 export default (state = initialState, action) => {
@@ -35,6 +36,12 @@ export default (state = initialState, action) => {
         return {
             ...state,
             welcomeMessage: action.msg
+        }
+    }
+    if (action.type === 'TAKEN_COLORS_RECEIVED') {
+        return {
+            ...state,
+            takenColors: action.colors
         }
     }
     return state;

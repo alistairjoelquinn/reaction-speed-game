@@ -36,6 +36,7 @@ io.on('connection', (socket) => {
             You are player number ${Object.keys(currentUsers).length}!
             ${selectedColorsCalculate(currentUsers)}
         `);
+        io.to(socket.id).emit("takenColors", Object.values(currentUsers).filter(Boolean));
         consola.success(currentUsers);
     };
 
