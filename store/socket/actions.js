@@ -49,3 +49,12 @@ export const storeTakenColors = colors => {
         });
     }
 }
+
+export const newColorChosen = color => {
+    return dispatch => {
+        dispatch({
+            type: "NEW_COLOR_CHOSEN",
+            color
+        });
+    }
+}
