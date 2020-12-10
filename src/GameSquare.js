@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import MiddleButton from './MiddleButton';
 import UserInfo from './UserInfo';
-import { DisplayUserColorStyles, GameAreaStyles, GameStyles, WelcomeMessageStlyes } from './styles/GameSquareStyles';
+import { DisplayUserColorStyles, GameAreaStyles, GameStyles, WelcomeMessageStyles } from './styles/GameSquareStyles';
 import SingleGameBox from './SingleGameBox';
 
 const gameColors = ['green', 'pink', 'blue', 'orange'];
@@ -12,6 +12,7 @@ const GameSquare = () => {
     const userId = useSelector(state => state.socket?.id);
     const userColor = useSelector(state => state.socket?.userColor);
     const welcomeMessage = useSelector(state => state.socket?.welcomeMessage);
+    const readyToPlay = useSelector(state => state.socket?.readyToPlay);
     const [displayUserColor, setDisplayUserColor] = useState(false)
     const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true)
 
@@ -60,9 +61,9 @@ const GameSquare = () => {
                     </DisplayUserColorStyles>
                 }
             </GameAreaStyles>
-            <WelcomeMessageStlyes>
+            {readyToPlay || <WelcomeMessageStyles>
                 Waiting for players<div className="dot-pulse dots"></div>
-            </WelcomeMessageStlyes>
+            </WelcomeMessageStyles>}
         </>
     );
 };

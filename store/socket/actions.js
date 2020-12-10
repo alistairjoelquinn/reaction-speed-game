@@ -3,16 +3,16 @@ export const socketConnected = () => {
         dispatch({
             type: "SOCKET_CONNECTED"
         });
-    }
-}
+    };
+};
 
 export const gameFull = () => {
     return dispatch => {
         dispatch({
             type: "GAME_FULL"
         });
-    }
-}
+    };
+};
 
 export const storePlayerId = id => {
     return dispatch => {
@@ -20,8 +20,8 @@ export const storePlayerId = id => {
             type: "PLAYER_ID_RECEIVED",
             id
         });
-    }
-}
+    };
+};
 
 export const storePlayerColor = color => {
     return dispatch => {
@@ -29,8 +29,8 @@ export const storePlayerColor = color => {
             type: "PLAYER_COLOR_RECEIVED",
             color
         });
-    }
-}
+    };
+};
 
 export const storeWelcomeMessage = msg => {
     return dispatch => {
@@ -38,8 +38,8 @@ export const storeWelcomeMessage = msg => {
             type: "WELCOME_MESSAGE_RECEIVED",
             msg
         });
-    }
-}
+    };
+};
 
 export const storeTakenColors = colors => {
     return dispatch => {
@@ -47,8 +47,8 @@ export const storeTakenColors = colors => {
             type: "TAKEN_COLORS_RECEIVED",
             colors
         });
-    }
-}
+    };
+};
 
 export const newColorChosen = color => {
     return dispatch => {
@@ -56,5 +56,13 @@ export const newColorChosen = color => {
             type: "NEW_COLOR_CHOSEN",
             color
         });
-    }
-}
+    };
+};
+
+export const readyToPlay = () => {
+    return dispatch => {
+        dispatch({
+            type: "READY_TO_PLAY"
+        });
+    };
+};

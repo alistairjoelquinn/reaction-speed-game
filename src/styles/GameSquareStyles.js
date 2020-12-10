@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WelcomeMessageStlyes = styled.div`
+export const WelcomeMessageStyles = styled.div`
     position: absolute;
     bottom: 20px;
     left: 0;
@@ -14,7 +14,7 @@ export const WelcomeMessageStlyes = styled.div`
     align-items: center;
     justify-content: center;
     .dots {
-        margin-top: 2rem;
+        margin-top: 2.2rem;
         margin-left: 2.7rem;
     }
 `;

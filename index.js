@@ -45,5 +45,8 @@ io.on('connection', (socket) => {
         consola.success(currentUsers);
         io.to(socket.id).emit("playerColor", userColor);
         io.emit('newColorChosen', userColor);
+        if (Object.values(currentUsers).filter(Boolean).length === 4) {
+            io.emit('readyToPlay');
+        }
     });
 });
