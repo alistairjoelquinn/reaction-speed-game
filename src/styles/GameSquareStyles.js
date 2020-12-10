@@ -1,5 +1,24 @@
 import styled from "styled-components";
 
+export const WelcomeMessageStlyes = styled.div`
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    font-size: 5rem;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--orange);
+    user-select: none;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .dots {
+        margin-top: 2rem;
+        margin-left: 2.7rem;
+    }
+`;
+
 export const GameAreaStyles = styled.div`
     margin-top: 60px;
     display: flex;

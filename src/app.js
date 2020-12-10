@@ -5,6 +5,7 @@ import 'normalize.css';
 import Game from './Game';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
+import Dots from './styles/Dots';
 
 const AppStyles = styled.div`
     display: flex;
@@ -31,6 +32,7 @@ export default function App() {
         <AppStyles>
             <GlobalStyles />
             <Typography />
+            <Dots />
             <div className="title">Reaction Speed Game</div>
             <Game />
         </AppStyles>

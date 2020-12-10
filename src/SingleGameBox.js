@@ -5,6 +5,7 @@ import { socket } from './socket';
 
 const SingleGameBox = ({ color, userId }) => {
     const takenColors = useSelector(state => state.socket?.takenColors);
+    const userColor = useSelector(state => state.socket?.userColor);
 
     const taken = takenColors.some(takenColor => takenColor === color);
 
@@ -12,7 +13,7 @@ const SingleGameBox = ({ color, userId }) => {
         return (
             <div
                 className={`game-item ${color} disabled`}
-            >TAKEN</div>
+            >{userColor === color ? 'YOU' : 'TAKEN'}</div>
         )
     } else {
         return (
