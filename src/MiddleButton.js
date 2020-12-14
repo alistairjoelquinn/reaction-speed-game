@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -22,10 +22,18 @@ const MiddleButtonStyles = styled.div`
 `;
 
 const MiddleButton = ({ start }) => {
+    const [gameBegin, setGameBegin] = useState(false)
+
+    useEffect(() => {
+        if (start) {
+            setGameBegin(true)
+        }
+    }, [start])
+
     return (
         <MiddleButtonStyles>
             <div className="circle-button">
-                <span>{start ? 'Wait...' : 'GO!'}</span>
+                <span>{gameBegin ? 'Wait...' : 'GO!'}</span>
             </div>
         </MiddleButtonStyles>
     );

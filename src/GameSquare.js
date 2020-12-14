@@ -11,12 +11,11 @@ const gameColors = ['green', 'pink', 'blue', 'orange'];
 const GameSquare = () => {
     const userId = useSelector(state => state.socket?.id);
     const userColor = useSelector(state => state.socket?.userColor);
-    const [displayUserColor, setDisplayUserColor] = useState(false)
-
     const welcomeMessage = useSelector(state => state.socket?.welcomeMessage);
-    const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true)
-
     const readyToPlay = useSelector(state => state.socket?.readyToPlay);
+
+    const [displayUserColor, setDisplayUserColor] = useState(false)
+    const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true)
     const [displayReadyToPlay, setDisplayReadyToPlay] = useState(false)
     const [middleButtonStart, setMiddleButtonStart] = useState(false);
 
@@ -46,7 +45,7 @@ const GameSquare = () => {
                     setDisplayReadyToPlay(false);
                     setTimeout(() => {
                         setMiddleButtonStart(true);
-                    }, 500)
+                    }, 10)
                 }, 5000);
             }, 2000);
         }
