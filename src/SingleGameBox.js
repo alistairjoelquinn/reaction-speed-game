@@ -3,10 +3,8 @@ import { useSelector } from 'react-redux';
 
 import { socket } from './socket';
 
-const SingleGameBox = ({ color, userId }) => {
+const SingleGameBox = ({ color, userId, userColor }) => {
     const takenColors = useSelector(state => state.socket?.takenColors);
-    const userColor = useSelector(state => state.socket?.userColor);
-
     const taken = takenColors.some(takenColor => takenColor === color);
 
     if (taken) {
@@ -14,6 +12,12 @@ const SingleGameBox = ({ color, userId }) => {
             <div
                 className={`game-item ${color} disabled`}
             >{userColor === color ? 'YOU' : 'TAKEN'}</div>
+        )
+    } else if (userColor && !Boolean(userColor === color)) {
+        return (
+            <div
+                className={`game-item ${color} disabled`}
+            ></div>
         )
     } else {
         return (

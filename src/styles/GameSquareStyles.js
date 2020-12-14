@@ -79,7 +79,7 @@ export const GameStyles = styled.div`
     }
 `;
 
-export const DisplayUserColorStyles = styled.div`
+export const DisplayUserInfoStyles = styled.div`
     position: absolute;
     width: 100vw;
     height: 100vh;

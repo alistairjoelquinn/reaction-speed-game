@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import MiddleButton from './MiddleButton';
 import UserInfo from './UserInfo';
-import { DisplayUserColorStyles, GameAreaStyles, GameStyles, WelcomeMessageStyles } from './styles/GameSquareStyles';
+import { DisplayUserInfoStyles, GameAreaStyles, GameStyles, WelcomeMessageStyles } from './styles/GameSquareStyles';
 import SingleGameBox from './SingleGameBox';
 
 const gameColors = ['green', 'pink', 'blue', 'orange'];
@@ -11,10 +11,14 @@ const gameColors = ['green', 'pink', 'blue', 'orange'];
 const GameSquare = () => {
     const userId = useSelector(state => state.socket?.id);
     const userColor = useSelector(state => state.socket?.userColor);
-    const welcomeMessage = useSelector(state => state.socket?.welcomeMessage);
-    const readyToPlay = useSelector(state => state.socket?.readyToPlay);
     const [displayUserColor, setDisplayUserColor] = useState(false)
+
+    const welcomeMessage = useSelector(state => state.socket?.welcomeMessage);
     const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true)
+
+    const readyToPlay = useSelector(state => state.socket?.readyToPlay);
+    const [displayReadyToPlay, setDisplayReadyToPlay] = useState(false)
+
 
     useEffect(
         () => {
@@ -34,9 +38,25 @@ const GameSquare = () => {
         }, 2000);
     }
 
+    const readyToPlayHandler = () => {
+        if (readyToPlay) {
+            setTimeout(() => {
+                console.log('running');
+                setDisplayReadyToPlay(true);
+                setTimeout(() => {
+                    setDisplayReadyToPlay(false);
+                }, 5000);
+            }, 2000);
+        }
+    }
+
     useEffect(() => {
         welcomeMessageHandler()
     }, [welcomeMessage])
+
+    useEffect(() => {
+        readyToPlayHandler()
+    }, [readyToPlay])
 
     if (displayWelcomeMessage) {
         return <UserInfo welcomeMessage={welcomeMessage} />
@@ -51,14 +71,20 @@ const GameSquare = () => {
                             key={color}
                             color={color}
                             userId={userId}
+                            userColor={userColor}
                         />
                     ))}
                 </GameStyles>
                 <MiddleButton />
                 {displayUserColor &&
-                    <DisplayUserColorStyles>
+                    <DisplayUserInfoStyles>
                         <UserInfo color={userColor} />
-                    </DisplayUserColorStyles>
+                    </DisplayUserInfoStyles>
+                }
+                {displayReadyToPlay &&
+                    <DisplayUserInfoStyles>
+                        <UserInfo ready />
+                    </DisplayUserInfoStyles>
                 }
             </GameAreaStyles>
             {readyToPlay || <WelcomeMessageStyles>

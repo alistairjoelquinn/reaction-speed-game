@@ -27,7 +27,7 @@ const UserInfoStyles = styled.div`
     }
 `;
 
-const UserInfo = ({ color, instructions, welcomeMessage }) => {
+const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
     const gameFull = useSelector(state => state.socket?.gameFull);
     const dispatch = useDispatch();
 
@@ -54,6 +54,12 @@ const UserInfo = ({ color, instructions, welcomeMessage }) => {
                         <p>This game is already full, there is no more space for new players!</p>
                         <p>Snooze ya lose sucker....</p>
                     </>)
+                }
+                {ready &&
+                    <>
+                        <p>Wait for the red light, first to hit the space bar wins the point</p>
+                        <p>First to 5 points wins the game</p>
+                    </>
                 }
                 {welcomeMessage &&
                     <p>{welcomeMessage}</p>
