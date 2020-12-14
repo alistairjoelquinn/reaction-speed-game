@@ -18,7 +18,7 @@ const GameSquare = () => {
 
     const readyToPlay = useSelector(state => state.socket?.readyToPlay);
     const [displayReadyToPlay, setDisplayReadyToPlay] = useState(false)
-
+    const [middleButtonStart, setMiddleButtonStart] = useState(false);
 
     useEffect(
         () => {
@@ -41,10 +41,12 @@ const GameSquare = () => {
     const readyToPlayHandler = () => {
         if (readyToPlay) {
             setTimeout(() => {
-                console.log('running');
                 setDisplayReadyToPlay(true);
                 setTimeout(() => {
                     setDisplayReadyToPlay(false);
+                    setTimeout(() => {
+                        setMiddleButtonStart(true);
+                    }, 500)
                 }, 5000);
             }, 2000);
         }
@@ -75,7 +77,7 @@ const GameSquare = () => {
                         />
                     ))}
                 </GameStyles>
-                <MiddleButton />
+                <MiddleButton start={middleButtonStart} />
                 {displayUserColor &&
                     <DisplayUserInfoStyles>
                         <UserInfo color={userColor} />

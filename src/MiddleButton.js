@@ -21,11 +21,11 @@ const MiddleButtonStyles = styled.div`
     
 `;
 
-const MiddleButton = () => {
+const MiddleButton = ({ start }) => {
     return (
         <MiddleButtonStyles>
             <div className="circle-button">
-                <span>GO!</span>
+                <span>{start ? 'Wait...' : 'GO!'}</span>
             </div>
         </MiddleButtonStyles>
     );
