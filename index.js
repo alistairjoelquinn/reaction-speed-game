@@ -61,8 +61,9 @@ io.on('connection', (socket) => {
 
     socket.on('playerPress', (userId) => {
         if (waiting === true) {
-            updateScore(userId)
+            updateScore(userId);
         } else {
+            reduceScore(userId);
             return;
         }
         waiting = false;
@@ -83,15 +84,21 @@ io.on('connection', (socket) => {
         setTimeout(() => {
             console.log('game GO');
             io.emit('playersGo');
+            waiting = true;
         }, randomTimeCounter());
-        waiting = true;
     }
 
     const updateScore = (userId) => {
         scores[userId]++;
         colorScores[currentUsers[userId]]++;
         io.emit('scoreUpdate', colorScores);
-    }
+    };
+
+    const reduceScore = (userId) => {
+        scores[userId]--;
+        colorScores[currentUsers[userId]]--;
+        io.emit('scoreUpdate', colorScores);
+    };
 
     const randomTimeCounter = () => {
         const timeValue = Math.floor(Math.random() * 10000);
