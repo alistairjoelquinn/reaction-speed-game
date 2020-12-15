@@ -82,3 +82,12 @@ export const buttonReset = () => {
         });
     };
 };
+
+export const scoreUpdate = score => {
+    return dispatch => {
+        dispatch({
+            type: "SCORE_UPDATE",
+            score
+        });
+    };
+};

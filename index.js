@@ -25,6 +25,12 @@ server.listen(8080, () => consola.success("Server Listening"));
 
 const currentUsers = {};
 const scores = {};
+const colorScores = {
+    blue: 0,
+    orange: 0,
+    pink: 0,
+    green: 0
+};
 let waiting = false;
 
 io.on('connection', (socket) => {
@@ -83,6 +89,8 @@ io.on('connection', (socket) => {
 
     const updateScore = (userId) => {
         scores[userId]++;
+        colorScores[currentUsers[userId]]++;
+        io.emit('scoreUpdate', colorScores);
     }
 
     const randomTimeCounter = () => {

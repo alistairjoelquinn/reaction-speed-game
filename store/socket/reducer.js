@@ -6,7 +6,13 @@ const initialState = {
     welcomeMessage: '',
     takenColors: [],
     readyToPlay: false,
-    playersGo: false
+    playersGo: false,
+    scores: {
+        blue: 0,
+        orange: 0,
+        pink: 0,
+        green: 0
+    }
 };
 
 export default (state = initialState, action) => {
@@ -71,6 +77,12 @@ export default (state = initialState, action) => {
         return {
             ...state,
             playersGo: false
+        };
+    }
+    if (action.type === 'SCORE_UPDATE') {
+        return {
+            ...state,
+            scores: action.score
         };
     }
     return state;
