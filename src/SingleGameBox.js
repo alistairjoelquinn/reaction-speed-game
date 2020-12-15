@@ -35,7 +35,7 @@ const SingleGameBox = ({ color, userId, userColor }) => {
         if (color === userColor) {
             return (
                 <div
-                    className={`game-item ${color} disabled`}
+                    className={`game-item current-user ${color} disabled`}
                 >{colorScores[color]}</div>
             )
         } else {
