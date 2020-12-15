@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+
+import { socket } from './socket';
 
 const MiddleButtonStyles = styled.div`
     z-index: 1;
@@ -18,10 +20,17 @@ const MiddleButtonStyles = styled.div`
             user-select: none;
         }
     }
-    
+    .go {
+        background-color: red;
+        span {
+            color: var(--white);
+        }
+    }
 `;
 
 const MiddleButton = ({ start }) => {
+    const userId = useSelector(state => state.socket?.id);
+    const playersGo = useSelector(state => state.socket?.playersGo);
     const [gameBegin, setGameBegin] = useState(false);
 
     useEffect(() => {
@@ -32,8 +41,11 @@ const MiddleButton = ({ start }) => {
 
     return (
         <MiddleButtonStyles>
-            <div className="circle-button">
-                <span>{gameBegin ? 'Wait...' : 'GO!'}</span>
+            <div
+                className={playersGo ? "circle-button go" : "circle-button"}
+                onClick={() => socket.emit('playerPress', userId)}
+            >
+                <span>{playersGo ? "GO!" : (gameBegin ? 'Wait...' : 'GO!')}</span>
             </div>
         </MiddleButtonStyles>
     );

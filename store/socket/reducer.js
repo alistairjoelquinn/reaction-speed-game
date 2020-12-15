@@ -5,7 +5,8 @@ const initialState = {
     userColor: null,
     welcomeMessage: '',
     takenColors: [],
-    readyToPlay: false
+    readyToPlay: false,
+    playersGo: false
 };
 
 export default (state = initialState, action) => {
@@ -58,6 +59,12 @@ export default (state = initialState, action) => {
         return {
             ...state,
             readyToPlay: true
+        };
+    }
+    if (action.type === 'PLAYERS_GO') {
+        return {
+            ...state,
+            playersGo: true
         };
     }
     return state;

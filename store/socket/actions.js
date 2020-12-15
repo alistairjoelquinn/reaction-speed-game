@@ -66,3 +66,11 @@ export const readyToPlay = () => {
         });
     };
 };
+
+export const playersGo = () => {
+    return dispatch => {
+        dispatch({
+            type: "PLAYERS_GO"
+        });
+    };
+};

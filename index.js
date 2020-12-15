@@ -25,6 +25,7 @@ server.listen(8080, () => consola.success("Server Listening"));
 
 const currentUsers = {};
 const scores = {};
+let waiting = false;
 
 io.on('connection', (socket) => {
     if (Object.keys(currentUsers).length >= 4) {
@@ -52,10 +53,38 @@ io.on('connection', (socket) => {
         }
     });
 
+    socket.on('playerPress', (userId) => {
+        if (waiting === true) {
+            updateScore(userId)
+        }
+        waiting = false;
+        consola.info('scores after updating: ', scores);
+        play();
+    })
+
     const gameInitiate = () => {
         for (const key in currentUsers) {
             scores[key] = 0;
         }
-        consola.info('scores: ', scores);
+        consola.info('scores in gameInitiate: ', scores);
+        setTimeout(play, 6000);
+    };
+
+    const play = () => {
+        setTimeout(() => {
+            console.log('game GO');
+            io.emit('playersGo');
+        }, randomTimeCounter());
+        waiting = true;
+    }
+
+    const updateScore = (userId) => {
+        scores[userId]++;
+    }
+
+    const randomTimeCounter = () => {
+        const timeValue = Math.floor(Math.random() * 10001);
+        console.log('timeValue: ', timeValue);
+        return timeValue;
     };
 });
