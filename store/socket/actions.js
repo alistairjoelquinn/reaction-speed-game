@@ -74,3 +74,11 @@ export const playersGo = () => {
         });
     };
 };
+
+export const buttonReset = () => {
+    return dispatch => {
+        dispatch({
+            type: "BUTTON_RESET"
+        });
+    };
+};

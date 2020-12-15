@@ -67,5 +67,11 @@ export default (state = initialState, action) => {
             playersGo: true
         };
     }
+    if (action.type === 'BUTTON_RESET') {
+        return {
+            ...state,
+            playersGo: false
+        };
+    }
     return state;
 }

@@ -56,9 +56,12 @@ io.on('connection', (socket) => {
     socket.on('playerPress', (userId) => {
         if (waiting === true) {
             updateScore(userId)
+        } else {
+            return;
         }
         waiting = false;
         consola.info('scores after updating: ', scores);
+        io.emit('buttonReset');
         play();
     })
 
@@ -83,7 +86,7 @@ io.on('connection', (socket) => {
     }
 
     const randomTimeCounter = () => {
-        const timeValue = Math.floor(Math.random() * 10001);
+        const timeValue = Math.floor(Math.random() * 10000);
         console.log('timeValue: ', timeValue);
         return timeValue;
     };
