@@ -14,9 +14,9 @@ const GameSquare = () => {
     const welcomeMessage = useSelector(state => state.socket?.welcomeMessage);
     const readyToPlay = useSelector(state => state.socket?.readyToPlay);
 
-    const [displayUserColor, setDisplayUserColor] = useState(false)
-    const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true)
-    const [displayReadyToPlay, setDisplayReadyToPlay] = useState(false)
+    const [displayUserColor, setDisplayUserColor] = useState(false);
+    const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true);
+    const [displayReadyToPlay, setDisplayReadyToPlay] = useState(false);
     const [middleButtonStart, setMiddleButtonStart] = useState(false);
 
     useEffect(
@@ -49,18 +49,18 @@ const GameSquare = () => {
                 }, 5000);
             }, 2000);
         }
-    }
+    };
 
     useEffect(() => {
-        welcomeMessageHandler()
-    }, [welcomeMessage])
+        welcomeMessageHandler();
+    }, [welcomeMessage]);
 
     useEffect(() => {
-        readyToPlayHandler()
-    }, [readyToPlay])
+        readyToPlayHandler();
+    }, [readyToPlay]);
 
     if (displayWelcomeMessage) {
-        return <UserInfo welcomeMessage={welcomeMessage} />
+        return <UserInfo welcomeMessage={welcomeMessage} />;
     }
 
     return (

@@ -22,13 +22,13 @@ const MiddleButtonStyles = styled.div`
 `;
 
 const MiddleButton = ({ start }) => {
-    const [gameBegin, setGameBegin] = useState(false)
+    const [gameBegin, setGameBegin] = useState(false);
 
     useEffect(() => {
         if (start) {
-            setGameBegin(true)
+            setGameBegin(true);
         }
-    }, [start])
+    }, [start]);
 
     return (
         <MiddleButtonStyles>

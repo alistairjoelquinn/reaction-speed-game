@@ -24,6 +24,7 @@ app.get('*', (req, res) => res.sendFile(__dirname + '/init/index.html'));
 server.listen(8080, () => consola.success("Server Listening"));
 
 const currentUsers = {};
+const scores = {};
 
 io.on('connection', (socket) => {
     if (Object.keys(currentUsers).length >= 4) {
@@ -47,6 +48,14 @@ io.on('connection', (socket) => {
         io.emit('newColorChosen', userColor);
         if (Object.values(currentUsers).filter(Boolean).length === 4) {
             io.emit('readyToPlay');
+            gameInitiate();
         }
     });
+
+    const gameInitiate = () => {
+        for (const key in currentUsers) {
+            scores[key] = 0;
+        }
+        consola.info('scores: ', scores);
+    };
 });
