@@ -17,15 +17,21 @@ export const WelcomeMessageStyles = styled.div`
         margin-top: 2.2rem;
         margin-left: 2.7rem;
     }
+    @media (max-height: 450px) {
+        font-size: 3rem;
+    }
 `;
 
 export const GameAreaStyles = styled.div`
-    margin-top: 60px;
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     .game-container {
         background-color: lightgray;
+    }
+    @media (max-width: 900px) {
+        margin-top: 0;
     }
 `;
 
@@ -79,6 +85,9 @@ export const GameStyles = styled.div`
     }
     .disabled:hover {
         opacity: 1;
+    }
+    @media (max-width: 800px) {
+        height: 50vh;
     }
 `;
 

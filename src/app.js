@@ -35,6 +35,11 @@ const AppStyles = styled.div`
             font-size: 50px;
         }
     }
+    @media (max-height: 500px) {
+        div.title {
+            font-size: 40px;
+        }
+    }
 `;
 
 export default function App() {
