@@ -53,7 +53,7 @@ export const GameStyles = styled.div`
         user-select: none;
     }
     .current-user {
-        border: 3px solid yellow;
+        border: 4px solid yellow;
     }
     .game-item:hover {
         opacity: 0.6;

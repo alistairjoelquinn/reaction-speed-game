@@ -12,10 +12,13 @@ const UserInfoStyles = styled.div`
     border-radius: 5rem;
     background-color: var(--white);
     color: var(--black);
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    .bigger-text {
+        font-size: 3rem;
+    }
     p {
         text-align: center;
     }
@@ -46,7 +49,6 @@ const UserInfoStyles = styled.div`
     }
     @media (max-height: 550px) {
         button {
-            /* height: 2rem; */
             font-size: 1.2rem;
         }
     }
@@ -59,7 +61,7 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
     return (
         <>
             <UserInfoStyles>
-                {color && <p style={{ fontSize: '60px' }}>
+                {color && <p style={{ fontSize: '5rem' }}>
                     You selected {color} as your color!
                 </p>}
                 {instructions && (!gameFull ?
@@ -76,18 +78,18 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
                     </>
                     :
                     <>
-                        <p>This game is already full, there is no more space for new players!</p>
-                        <p>Snooze ya lose sucker....</p>
+                        <p className="bigger-text">This game is already full, there is no more space for new players!</p>
+                        <p className="bigger-text">Snooze ya lose sucker....</p>
                     </>)
                 }
                 {ready &&
                     <>
-                        <p>Wait for the red light, first to click the button wins the point</p>
-                        <p>First to 5 points wins the game</p>
+                        <p className="bigger-text">Wait for the red light, first to click the button wins the point</p>
+                        <p className="bigger-text">First to 5 points wins the game</p>
                     </>
                 }
                 {welcomeMessage &&
-                    <p>{welcomeMessage}</p>
+                    <p className="bigger-text">{welcomeMessage}</p>
                 }
             </UserInfoStyles>
         </>
