@@ -19,7 +19,7 @@ const AppStyles = styled.div`
     div.title {
         position: absolute;
         top: 20px;
-        font-size: 70px;
+        font-size: 7rem;
         font-weight: bold;
         color: transparent;
         -webkit-text-stroke: 1px var(--orange);
@@ -27,17 +27,17 @@ const AppStyles = styled.div`
     }
     @media (max-width: 1000px) {
         div.title {
-            font-size: 60px;
+            font-size: 6rem;
         }
     }
     @media (max-width: 800px) {
         div.title {
-            font-size: 50px;
+            font-size: 5rem;
         }
     }
     @media (max-height: 500px) {
         div.title {
-            font-size: 40px;
+            font-size: 4rem;
         }
     }
 `;

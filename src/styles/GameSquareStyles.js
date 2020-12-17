@@ -23,7 +23,7 @@ export const WelcomeMessageStyles = styled.div`
 `;
 
 export const GameAreaStyles = styled.div`
-    margin-top: 5rem;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
