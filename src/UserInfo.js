@@ -25,6 +25,31 @@ const UserInfoStyles = styled.div`
         border: 2px solid var(--orange);
         border-radius: 1.5rem;
     }
+    @media (max-width: 1200px) {
+        p {
+            font-size: 2rem;
+        }
+    }
+    @media (max-width: 850px) {
+        p {
+            font-size: 1.9rem;
+        }
+    }
+    @media (max-width: 720px) {
+        p {
+            font-size: 1.7rem;
+        }
+        button {
+            font-size: 2rem;
+            width: 100px;
+        }
+    }
+    @media (max-height: 550px) {
+        button {
+            /* height: 2rem; */
+            font-size: 1.2rem;
+        }
+    }
 `;
 
 const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
@@ -40,10 +65,10 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
                 {instructions && (!gameFull ?
                     <>
                         <p>
-                            This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red, a noise will play at the same time.
+                            This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red.
                         </p>
                         <p>
-                            Once that happens, the first person to hit the space bar gets the point! Be careful though, if you hit the spacebar before the light turns red you'll be disqualified from the round! First to 5 points wins the game...
+                            Once that happens, the first person to click on the button gets the point! Be careful though, if you click before the light turns red you'll be deducted 1 point! First to 5 points wins the game...
                         </p>
                         <button onClick={() => dispatch(startGame())}>
                             Start
@@ -57,7 +82,7 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
                 }
                 {ready &&
                     <>
-                        <p>Wait for the red light, first to hit the space bar wins the point</p>
+                        <p>Wait for the red light, first to click the button wins the point</p>
                         <p>First to 5 points wins the game</p>
                     </>
                 }

@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
             scores[key] = 0;
         }
         consola.info('scores in gameInitiate: ', scores);
-        setTimeout(play, 6000);
+        setTimeout(play, 8000);
     };
 
     const play = () => {
