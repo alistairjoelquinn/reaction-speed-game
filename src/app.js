@@ -25,6 +25,16 @@ const AppStyles = styled.div`
         -webkit-text-stroke: 1px var(--orange);
         user-select: none;
     }
+    @media (max-width: 1000px) {
+        div.title {
+            font-size: 60px;
+        }
+    }
+    @media (max-width: 800px) {
+        div.title {
+            font-size: 50px;
+        }
+    }
 `;
 
 export default function App() {
