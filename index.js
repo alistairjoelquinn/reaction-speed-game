@@ -24,7 +24,6 @@ app.get('*', (req, res) => res.sendFile(__dirname + '/init/index.html'));
 server.listen(8080, () => consola.success("Server Listening"));
 
 const currentUsers = {};
-const scores = {};
 const colorScores = {
     blue: 0,
     orange: 0,
@@ -67,18 +66,11 @@ io.on('connection', (socket) => {
             return;
         }
         waiting = false;
-        consola.info('scores after updating: ', scores);
         io.emit('buttonReset');
         play();
     })
 
-    const gameInitiate = () => {
-        for (const key in currentUsers) {
-            scores[key] = 0;
-        }
-        consola.info('scores in gameInitiate: ', scores);
-        setTimeout(play, 8000);
-    };
+    const gameInitiate = () => setTimeout(play, 8000);
 
     const play = () => {
         setTimeout(() => {
@@ -89,13 +81,11 @@ io.on('connection', (socket) => {
     }
 
     const updateScore = (userId) => {
-        scores[userId]++;
         colorScores[currentUsers[userId]]++;
         io.emit('scoreUpdate', colorScores);
     };
 
     const reduceScore = (userId) => {
-        scores[userId]--;
         colorScores[currentUsers[userId]]--;
         io.emit('scoreUpdate', colorScores);
     };
