@@ -100,3 +100,11 @@ export const gameWinner = winner => {
         });
     };
 };
+
+export const winnerReset = () => {
+    return dispatch => {
+        dispatch({
+            type: "WINNER_RESET"
+        });
+    };
+};

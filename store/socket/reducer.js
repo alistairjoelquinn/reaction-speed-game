@@ -92,5 +92,11 @@ export default (state = initialState, action) => {
             winner: action.winner
         };
     }
+    if (action.type === 'WINNER_RESET') {
+        return {
+            ...state,
+            winner: ''
+        };
+    }
     return state;
 }

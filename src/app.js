@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import 'normalize.css';
 
@@ -6,7 +7,8 @@ import Game from './Game';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import Dots from './styles/Dots';
-import { useSelector } from 'react-redux';
+
+import { socket } from './socket';
 
 const AppStyles = styled.div`
     display: flex;
@@ -64,7 +66,12 @@ export default function App() {
             <Typography />
             <Dots />
             <div className="title">Reaction Speed Game</div>
-            {winner && <button className="game-end left">Play Again</button>}
+            {winner && <button
+                className="game-end left"
+                onClick={() => {
+                    socket.emit('playAgain');
+                }}
+            >Play Again</button>}
             {winner && <button className="game-end right">Exit</button>}
             <Game />
         </AppStyles>

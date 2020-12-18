@@ -23,7 +23,7 @@ app.get('*', (req, res) => res.sendFile(__dirname + '/init/index.html'));
 server.listen(8080, () => console.log("Server Listening"));
 
 const currentUsers = {};
-const colorScores = {
+let colorScores = {
     blue: 0,
     orange: 0,
     pink: 0,
@@ -38,6 +38,7 @@ io.on('connection', (socket) => {
         return;
     } else {
         currentUsers[socket.id] = null;
+        console.log(currentUsers);
         io.to(socket.id).emit("playerId", socket.id);
         io.to(socket.id).emit("welcomeMessage", `
             You are player number ${Object.keys(currentUsers).length}!
@@ -50,6 +51,7 @@ io.on('connection', (socket) => {
         currentUsers[userId] = userColor;
         io.to(socket.id).emit("playerColor", userColor);
         io.emit('newColorChosen', userColor);
+        console.log(currentUsers);
         if (Object.values(currentUsers).filter(Boolean).length === 4) {
             io.emit('readyToPlay');
             gameInitiate();
@@ -101,4 +103,19 @@ io.on('connection', (socket) => {
         }
         return null;
     };
+
+    socket.on('playAgain', () => {
+        colorScores = {
+            blue: 0,
+            orange: 0,
+            pink: 0,
+            green: 0
+        };
+        waiting = false;
+        winner = '';
+        io.emit('scoreUpdate', colorScores);
+        io.emit('buttonReset');
+        io.emit('winnerReset');
+        play();
+    })
 });
