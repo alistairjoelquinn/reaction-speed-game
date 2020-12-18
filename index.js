@@ -3,7 +3,6 @@ const app = express();
 const compression = require('compression');
 const server = require('http').Server(app);
 const io = require('socket.io')(server, { origins: 'localhost:8080' });
-const consola = require('consola');
 const { selectedColorsCalculate } = require('./utils/selectedColorsCalculate');
 
 app.use(compression());
@@ -21,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.get('*', (req, res) => res.sendFile(__dirname + '/init/index.html'));
 
-server.listen(8080, () => consola.success("Server Listening"));
+server.listen(8080, () => console.log("Server Listening"));
 
 const currentUsers = {};
 const colorScores = {
@@ -44,12 +43,12 @@ io.on('connection', (socket) => {
             ${selectedColorsCalculate(currentUsers)}
         `);
         io.to(socket.id).emit("takenColors", Object.values(currentUsers).filter(Boolean));
-        consola.success(currentUsers);
+        console.log(currentUsers);
     };
 
     socket.on('colorSelected', ({ userId, userColor }) => {
         currentUsers[userId] = userColor;
-        consola.success(currentUsers);
+        console.log(currentUsers);
         io.to(socket.id).emit("playerColor", userColor);
         io.emit('newColorChosen', userColor);
         if (Object.values(currentUsers).filter(Boolean).length === 4) {

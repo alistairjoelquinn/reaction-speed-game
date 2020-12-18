@@ -48,8 +48,9 @@ const UserInfoStyles = styled.div`
         }
     }
     @media (max-height: 550px) {
-        button {
-            font-size: 1.2rem;
+        button#start {
+            font-size: 1.8rem;
+            padding: 5px 0;
         }
     }
 `;
@@ -67,12 +68,12 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
                 {instructions && (!gameFull ?
                     <>
                         <p>
-                            This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red.
+                            This game is a test of your reaction speed! Everyone has to choose a color, After that you need to wait for the circle in the middle to turn red.
                         </p>
                         <p>
                             Once that happens, the first person to hit their square gets the point! Be careful though, if you hit before the light turns red you'll be deducted 1 point! First to 5 points wins the game...
                         </p>
-                        <button onClick={() => dispatch(startGame())}>
+                        <button id="start" onClick={() => dispatch(startGame())}>
                             Start
                         </button>
                     </>
