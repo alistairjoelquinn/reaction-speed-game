@@ -70,7 +70,7 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
                             This game is a test of your reaction speed! Everyone has to choose a colour, After that you need to wait for the circle in the middle to turn red.
                         </p>
                         <p>
-                            Once that happens, the first person to click on the button gets the point! Be careful though, if you click before the light turns red you'll be deducted 1 point! First to 5 points wins the game...
+                            Once that happens, the first person to hit their square gets the point! Be careful though, if you hit before the light turns red you'll be deducted 1 point! First to 5 points wins the game...
                         </p>
                         <button onClick={() => dispatch(startGame())}>
                             Start
@@ -84,7 +84,7 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
                 }
                 {ready &&
                     <>
-                        <p className="bigger-text">Wait for the red light, first to click the button wins the point</p>
+                        <p className="bigger-text">Wait for the red light, first to hit their square wins the point</p>
                         <p className="bigger-text">First to 5 points wins the game</p>
                     </>
                 }

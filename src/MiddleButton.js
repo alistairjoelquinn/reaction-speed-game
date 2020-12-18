@@ -29,7 +29,6 @@ const MiddleButtonStyles = styled.div`
 `;
 
 const MiddleButton = ({ start }) => {
-    const userId = useSelector(state => state.socket?.id);
     const playersGo = useSelector(state => state.socket?.playersGo);
     const [gameBegin, setGameBegin] = useState(false);
 
@@ -43,7 +42,6 @@ const MiddleButton = ({ start }) => {
         <MiddleButtonStyles>
             <div
                 className={playersGo ? "circle-button go" : "circle-button"}
-                onClick={() => socket.emit('playerPress', userId)}
             >
                 <span>{playersGo ? "GO!" : (gameBegin ? 'Wait...' : 'GO!')}</span>
             </div>

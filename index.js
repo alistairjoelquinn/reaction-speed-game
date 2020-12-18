@@ -71,10 +71,10 @@ io.on('connection', (socket) => {
     })
 
     const gameInitiate = () => setTimeout(play, 8000);
+    const randomTimeCounter = () => Math.floor(Math.random() * 10000);
 
     const play = () => {
         setTimeout(() => {
-            console.log('game GO');
             io.emit('playersGo');
             waiting = true;
         }, randomTimeCounter());
@@ -88,11 +88,5 @@ io.on('connection', (socket) => {
     const reduceScore = (userId) => {
         colorScores[currentUsers[userId]]--;
         io.emit('scoreUpdate', colorScores);
-    };
-
-    const randomTimeCounter = () => {
-        const timeValue = Math.floor(Math.random() * 10000);
-        console.log('timeValue: ', timeValue);
-        return timeValue;
     };
 });

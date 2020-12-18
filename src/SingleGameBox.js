@@ -36,6 +36,7 @@ const SingleGameBox = ({ color, userId, userColor }) => {
             return (
                 <div
                     className={`game-item current-user ${color} disabled`}
+                    onClick={() => socket.emit('playerPress', userId)}
                 >{colorScores[color]}</div>
             )
         } else {
