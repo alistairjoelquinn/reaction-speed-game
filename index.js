@@ -44,12 +44,10 @@ io.on('connection', (socket) => {
             ${selectedColorsCalculate(currentUsers)}
         `);
         io.to(socket.id).emit("takenColors", Object.values(currentUsers).filter(Boolean));
-        console.log(currentUsers);
     };
 
     socket.on('colorSelected', ({ userId, userColor }) => {
         currentUsers[userId] = userColor;
-        console.log(currentUsers);
         io.to(socket.id).emit("playerColor", userColor);
         io.emit('newColorChosen', userColor);
         if (Object.values(currentUsers).filter(Boolean).length === 4) {
@@ -65,9 +63,14 @@ io.on('connection', (socket) => {
             reduceScore(userId);
             return;
         }
-        waiting = false;
-        io.emit('buttonReset');
-        play();
+        winner = winnerCheck();
+        if (winner) {
+            io.emit('winner', winner);
+        } else {
+            waiting = false;
+            io.emit('buttonReset');
+            play();
+        }
     })
 
     const gameInitiate = () => setTimeout(play, 8000);
@@ -83,11 +86,6 @@ io.on('connection', (socket) => {
     const updateScore = (userId) => {
         colorScores[currentUsers[userId]]++;
         io.emit('scoreUpdate', colorScores);
-        winner = winnerCheck();
-        if (winner) {
-            console.log('winner: ', winner);
-            io.emit('winner', winner);
-        }
     };
 
     const reduceScore = (userId) => {

@@ -29,6 +29,7 @@ const MiddleButtonStyles = styled.div`
 `;
 
 const MiddleButton = ({ start }) => {
+    const winner = useSelector(state => state.socket?.winner);
     const playersGo = useSelector(state => state.socket?.playersGo);
     const [gameBegin, setGameBegin] = useState(false);
 
@@ -40,11 +41,19 @@ const MiddleButton = ({ start }) => {
 
     return (
         <MiddleButtonStyles>
-            <div
-                className={playersGo ? "circle-button go" : "circle-button"}
-            >
-                <span>{playersGo ? "GO!" : (gameBegin ? 'Wait...' : 'GO!')}</span>
-            </div>
+            {winner ?
+                <div
+                    className="circle-button"
+                >
+                    <span>{winner} wins!</span>
+                </div>
+                :
+                <div
+                    className={playersGo ? "circle-button go" : "circle-button"}
+                >
+                    <span>{playersGo ? "GO!" : (gameBegin ? 'Wait...' : 'GO!')}</span>
+                </div>
+            }
         </MiddleButtonStyles>
     );
 };
