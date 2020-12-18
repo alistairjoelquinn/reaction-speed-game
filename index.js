@@ -77,15 +77,29 @@ io.on('connection', (socket) => {
             io.emit('playersGo');
             waiting = true;
         }, randomTimeCounter());
-    }
+    };
 
     const updateScore = (userId) => {
         colorScores[currentUsers[userId]]++;
         io.emit('scoreUpdate', colorScores);
+        console.log('winner', winnerCheck());
     };
 
     const reduceScore = (userId) => {
         colorScores[currentUsers[userId]]--;
         io.emit('scoreUpdate', colorScores);
+    };
+
+    const winnerCheck = () => {
+        for (const prop in colorScores) {
+            if (colorScores[prop] >= 5) {
+                for (const key in currentUsers) {
+                    if (currentUsers[key] === prop) {
+                        return key;
+                    }
+                }
+            }
+        }
+        return null;
     };
 });
