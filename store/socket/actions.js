@@ -91,3 +91,12 @@ export const scoreUpdate = score => {
         });
     };
 };
+
+export const gameWinner = winner => {
+    return dispatch => {
+        dispatch({
+            type: "GAME_WINNER",
+            winner
+        });
+    };
+};

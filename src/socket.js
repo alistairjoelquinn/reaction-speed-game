@@ -1,8 +1,8 @@
 import * as io from 'socket.io-client';
 
 import {
-    buttonReset,
-    gameFull, newColorChosen, playersGo, readyToPlay, scoreUpdate, socketConnected, storePlayerColor,
+    buttonReset, gameFull, newColorChosen, playersGo, readyToPlay,
+    scoreUpdate, socketConnected, storePlayerColor, gameWinner,
     storePlayerId, storeTakenColors, storeWelcomeMessage
 } from '../store/socket/actions';
 
@@ -22,5 +22,6 @@ export const init = store => {
         socket.on('playersGo', () => store.dispatch(playersGo()));
         socket.on('buttonReset', () => store.dispatch(buttonReset()));
         socket.on('scoreUpdate', score => store.dispatch(scoreUpdate(score)));
+        socket.on('winner', winner => store.dispatch(gameWinner(winner)));
     }
 };

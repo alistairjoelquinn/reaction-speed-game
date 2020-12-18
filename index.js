@@ -30,6 +30,7 @@ const colorScores = {
     green: 0
 };
 let waiting = false;
+let winner;
 
 io.on('connection', (socket) => {
     if (Object.keys(currentUsers).length >= 4) {
@@ -82,7 +83,11 @@ io.on('connection', (socket) => {
     const updateScore = (userId) => {
         colorScores[currentUsers[userId]]++;
         io.emit('scoreUpdate', colorScores);
-        console.log('winner', winnerCheck());
+        winner = winnerCheck();
+        if (winner) {
+            console.log('winner: ', winner);
+            io.emit('winner', winner);
+        }
     };
 
     const reduceScore = (userId) => {
@@ -93,11 +98,7 @@ io.on('connection', (socket) => {
     const winnerCheck = () => {
         for (const prop in colorScores) {
             if (colorScores[prop] >= 5) {
-                for (const key in currentUsers) {
-                    if (currentUsers[key] === prop) {
-                        return key;
-                    }
-                }
+                return prop;
             }
         }
         return null;

@@ -12,7 +12,8 @@ const initialState = {
         orange: 0,
         pink: 0,
         green: 0
-    }
+    },
+    winner: ''
 };
 
 export default (state = initialState, action) => {
@@ -83,6 +84,12 @@ export default (state = initialState, action) => {
         return {
             ...state,
             scores: action.score
+        };
+    }
+    if (action.type === 'GAME_WINNER') {
+        return {
+            ...state,
+            winner: action.winner
         };
     }
     return state;
