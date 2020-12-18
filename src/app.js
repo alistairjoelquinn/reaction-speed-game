@@ -6,6 +6,7 @@ import Game from './Game';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import Dots from './styles/Dots';
+import { useSelector } from 'react-redux';
 
 const AppStyles = styled.div`
     display: flex;
@@ -25,6 +26,18 @@ const AppStyles = styled.div`
         -webkit-text-stroke: 1px var(--orange);
         user-select: none;
     }
+    .game-end {
+        position: absolute;
+        top: 20px;
+        border: 2px solid var(--orange);
+        border-radius: 1.5rem;
+    }
+    .left {
+        left: 20px;
+    }
+    .right {
+        right: 20px;
+    }
     @media (max-width: 1000px) {
         div.title {
             font-size: 6rem;
@@ -43,12 +56,16 @@ const AppStyles = styled.div`
 `;
 
 export default function App() {
+    const winner = useSelector(state => state.socket?.winner);
+
     return (
         <AppStyles>
             <GlobalStyles />
             <Typography />
             <Dots />
             <div className="title">Reaction Speed Game</div>
+            {winner && <button className="game-end left">Play Again</button>}
+            {winner && <button className="game-end right">Exit</button>}
             <Game />
         </AppStyles>
     );
