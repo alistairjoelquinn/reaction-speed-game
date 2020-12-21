@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const compression = require('compression');
 const server = require('http').Server(app);
-const io = require('socket.io')(server, { origins: 'localhost:8080' });
+const io = require('socket.io')(server, { origins: 'reaction-speed-game.herokuapp.com' });
 const { selectedColorsCalculate } = require('./utils/selectedColorsCalculate');
 
 app.use(compression());
