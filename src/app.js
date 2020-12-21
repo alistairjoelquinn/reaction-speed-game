@@ -66,7 +66,6 @@ const AppStyles = styled.div`
 
 export default function App() {
     const winner = useSelector(state => state.socket?.winner);
-    const id = useSelector(state => state.socket?.id);
     const playersCount = useSelector(state => state.socket?.playersCount);
 
     return (
@@ -81,7 +80,6 @@ export default function App() {
                     socket.emit('playAgain');
                 }}
             >Play Again</button>}
-            {winner && <button className="game-end top right">Exit</button>}
             <div className="players-count right">Current Players: {playersCount}</div>
             <Game />
         </AppStyles>
