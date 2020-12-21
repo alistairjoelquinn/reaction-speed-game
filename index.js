@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const compression = require('compression');
 const server = require('http').Server(app);
-const io = require('socket.io')(server, { origins: '*' });
+const io = require('socket.io')(server, { origins: 'reaction-speed-game.herokuapp.com' });
 const { selectedColorsCalculate } = require('./utils/selectedColorsCalculate');
 
 app.use(compression());
@@ -46,6 +46,7 @@ io.on('connection', (socket) => {
     };
 
     socket.on('startGame', id => {
+        console.log('running');
         io.to(socket.id).emit("welcomeMessage", `
             You are player number ${Object.keys(currentUsers).length}!
             ${selectedColorsCalculate(currentUsers)}
