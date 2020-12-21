@@ -57,6 +57,7 @@ io.on('connection', (socket) => {
         io.emit('newColorChosen', userColor);
         console.log(currentUsers);
         if (Object.values(currentUsers).filter(Boolean).length === 4) {
+            console.log('READY');
             io.emit('readyToPlay');
             gameInitiate();
         }
@@ -77,12 +78,34 @@ io.on('connection', (socket) => {
             io.emit('buttonReset');
             play();
         }
-    })
+    });
+
+    socket.on('disconnect', () => {
+        console.log('id: ', socket.id);
+        delete currentUsers[socket.id];
+        colorScores = {
+            blue: 0,
+            orange: 0,
+            pink: 0,
+            green: 0
+        };
+        waiting = false;
+        winner = '';
+        io.emit('scoreUpdate', colorScores);
+        io.emit('buttonReset');
+        io.emit('winnerReset');
+        io.emit('playersCount', Object.values(currentUsers).length);
+        io.emit('notReadyToPlay');
+        play(true);
+    });
 
     const gameInitiate = () => setTimeout(play, 8000);
-    const randomTimeCounter = () => Math.floor(Math.random() * 10000);
+    const randomTimeCounter = () => Math.floor(Math.random() * 1000);
 
-    const play = () => {
+    const play = (cancel) => {
+        if (cancel) {
+            return;
+        }
         setTimeout(() => {
             io.emit('playersGo');
             waiting = true;

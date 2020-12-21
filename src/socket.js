@@ -4,7 +4,7 @@ import {
     buttonReset, gameFull, newColorChosen, playersGo, readyToPlay,
     scoreUpdate, socketConnected, storePlayerColor, gameWinner,
     storePlayerId, storeTakenColors, storeWelcomeMessage, winnerReset,
-    playersCount
+    playersCount, notReadyToPlay
 } from '../store/socket/actions';
 
 export let socket;
@@ -21,6 +21,7 @@ export const init = store => {
         socket.on('takenColors', colors => store.dispatch(storeTakenColors(colors)));
         socket.on('newColorChosen', color => store.dispatch(newColorChosen(color)));
         socket.on('readyToPlay', () => store.dispatch(readyToPlay()));
+        socket.on('notReadyToPlay', () => store.dispatch(notReadyToPlay()));
         socket.on('playersGo', () => store.dispatch(playersGo()));
         socket.on('buttonReset', () => store.dispatch(buttonReset()));
         socket.on('scoreUpdate', score => store.dispatch(scoreUpdate(score)));

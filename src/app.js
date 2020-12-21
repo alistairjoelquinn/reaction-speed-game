@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import 'normalize.css';
@@ -66,6 +66,7 @@ const AppStyles = styled.div`
 
 export default function App() {
     const winner = useSelector(state => state.socket?.winner);
+    const id = useSelector(state => state.socket?.id);
     const playersCount = useSelector(state => state.socket?.playersCount);
 
     return (

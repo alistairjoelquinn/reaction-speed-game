@@ -76,6 +76,14 @@ export const readyToPlay = () => {
     };
 };
 
+export const notReadyToPlay = () => {
+    return dispatch => {
+        dispatch({
+            type: "NOT_READY_TO_PLAY"
+        });
+    };
+};
+
 export const playersGo = () => {
     return dispatch => {
         dispatch({

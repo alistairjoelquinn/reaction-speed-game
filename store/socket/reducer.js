@@ -14,7 +14,8 @@ const initialState = {
         pink: 0,
         green: 0
     },
-    winner: ''
+    winner: '',
+    gameReset: false
 };
 
 export default (state = initialState, action) => {
@@ -73,6 +74,17 @@ export default (state = initialState, action) => {
         return {
             ...state,
             readyToPlay: true
+        };
+    }
+    if (action.type === 'NOT_READY_TO_PLAY') {
+        return {
+            ...state,
+            userColor: null,
+            readyToPlay: false,
+            takenColors: [],
+            welcomeMessage: '',
+            gameReset: true,
+            playersGo: false
         };
     }
     if (action.type === 'PLAYERS_GO') {

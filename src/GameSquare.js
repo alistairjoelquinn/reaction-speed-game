@@ -13,6 +13,7 @@ const GameSquare = () => {
     const userColor = useSelector(state => state.socket?.userColor);
     const welcomeMessage = useSelector(state => state.socket?.welcomeMessage);
     const readyToPlay = useSelector(state => state.socket?.readyToPlay);
+    const gameReset = useSelector(state => state.socket?.gameReset);
 
     const [displayUserColor, setDisplayUserColor] = useState(false);
     const [displayWelcomeMessage, setDisplayWelcomeMessage] = useState(true);
@@ -29,6 +30,16 @@ const GameSquare = () => {
             }
         },
         [userColor]
+    );
+
+    useEffect(
+        () => {
+            if (gameReset) {
+                setMiddleButtonStart(false);
+
+            }
+        },
+        [gameReset]
     );
 
     const welcomeMessageHandler = () => {
