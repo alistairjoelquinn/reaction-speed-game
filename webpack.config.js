@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const WebpackBar = require('webpackbar');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const conf = {
@@ -35,10 +34,7 @@ const conf = {
                 loader: 'url-loader?limit=100000'
             }
         ]
-    },
-    plugins: [
-        new WebpackBar()
-    ]
+    }
 };
 
 if (require.main == module) {
