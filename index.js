@@ -15,7 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
         })
     );
 } else {
-    app.use('/output.js', (req, res) => res.sendFile(`${__dirname}/output.js`));
+    app.use('/output.js', (req, res) => {
+        console.log('js reached');
+        res.sendFile(`${__dirname}/output.js`)
+    });
 }
 
 app.get('*', (req, res) => res.sendFile(__dirname + '/init/index.html'));
