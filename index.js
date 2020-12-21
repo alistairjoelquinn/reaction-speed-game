@@ -17,6 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
     app.use('/output.js', (req, res) => {
         console.log('js reached');
+        console.log(`${__dirname}/output.js`);
         res.sendFile(`${__dirname}/output.js`)
     });
 }
