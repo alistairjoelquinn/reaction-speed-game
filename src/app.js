@@ -30,9 +30,16 @@ const AppStyles = styled.div`
     }
     .game-end {
         position: absolute;
-        top: 20px;
         border: 2px solid var(--orange);
         border-radius: 1.5rem;
+    }
+    .top {
+        top: 20px;
+    }
+    .players-count {
+        position: absolute;
+        bottom: 20px;
+        color: var(--orange);
     }
     .left {
         left: 20px;
@@ -59,6 +66,7 @@ const AppStyles = styled.div`
 
 export default function App() {
     const winner = useSelector(state => state.socket?.winner);
+    const playersCount = useSelector(state => state.socket?.playersCount);
 
     return (
         <AppStyles>
@@ -67,12 +75,13 @@ export default function App() {
             <Dots />
             <div className="title">Reaction Speed Game</div>
             {winner && <button
-                className="game-end left"
+                className="game-end top left"
                 onClick={() => {
                     socket.emit('playAgain');
                 }}
             >Play Again</button>}
-            {winner && <button className="game-end right">Exit</button>}
+            {winner && <button className="game-end top right">Exit</button>}
+            <div className="players-count right">Current Players: {playersCount}</div>
             <Game />
         </AppStyles>
     );

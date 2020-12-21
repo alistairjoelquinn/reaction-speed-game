@@ -3,7 +3,8 @@ import * as io from 'socket.io-client';
 import {
     buttonReset, gameFull, newColorChosen, playersGo, readyToPlay,
     scoreUpdate, socketConnected, storePlayerColor, gameWinner,
-    storePlayerId, storeTakenColors, storeWelcomeMessage, winnerReset
+    storePlayerId, storeTakenColors, storeWelcomeMessage, winnerReset,
+    playersCount
 } from '../store/socket/actions';
 
 export let socket;
@@ -13,6 +14,7 @@ export const init = store => {
         socket = io.connect();
         store.dispatch(socketConnected());
         socket.on('game_full', () => store.dispatch(gameFull()));
+        socket.on('playersCount', count => store.dispatch(playersCount(count)));
         socket.on('playerId', id => store.dispatch(storePlayerId(id)));
         socket.on('playerColor', color => store.dispatch(storePlayerColor(color)));
         socket.on('welcomeMessage', msg => store.dispatch(storeWelcomeMessage(msg)));

@@ -1,6 +1,7 @@
 const initialState = {
     connected: 'Not yet connected',
     gameFull: false,
+    playersCount: 0,
     id: null,
     userColor: null,
     welcomeMessage: '',
@@ -27,6 +28,12 @@ export default (state = initialState, action) => {
         return {
             ...state,
             gameFull: true
+        };
+    }
+    if (action.type === 'PLAYERS_COUNT') {
+        return {
+            ...state,
+            playersCount: action.count
         };
     }
     if (action.type === 'PLAYER_ID_RECEIVED') {

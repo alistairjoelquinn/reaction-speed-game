@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
             ${selectedColorsCalculate(currentUsers)}
         `);
         io.to(socket.id).emit("takenColors", Object.values(currentUsers).filter(Boolean));
+        io.emit('playersCount', Object.values(currentUsers).length);
     };
 
     socket.on('colorSelected', ({ userId, userColor }) => {

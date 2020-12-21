@@ -14,6 +14,15 @@ export const gameFull = () => {
     };
 };
 
+export const playersCount = count => {
+    return dispatch => {
+        dispatch({
+            type: "PLAYERS_COUNT",
+            count
+        });
+    };
+};
+
 export const storePlayerId = id => {
     return dispatch => {
         dispatch({
