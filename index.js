@@ -6,7 +6,6 @@ const io = require('socket.io')(server, { origins: 'reaction-speed-game.herokuap
 const { selectedColorsCalculate } = require('./utils/selectedColorsCalculate');
 
 app.use(compression());
-app.use(require('./webpack.config.js'));
 
 if (process.env.NODE_ENV !== 'production') {
     app.use(
@@ -17,9 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
     );
 } else {
     app.use('/output.js', (req, res) => {
-        console.log('js reached');
-        console.log(`${__dirname}/output.js`);
-        res.sendFile(`${__dirname}/output.js`)
+        res.sendFile(`${__dirname}/output.js`);
     });
 }
 
