@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.get('*', (req, res) => res.sendFile(__dirname + '/init/index.html'));
 
-server.listen(8080, () => console.log("Server Listening"));
+server.listen(process.env.PORT || 8080, () => console.log("Server Listening"));
 
 const currentUsers = {};
 let colorScores = {
