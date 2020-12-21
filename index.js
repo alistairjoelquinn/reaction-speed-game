@@ -40,13 +40,16 @@ io.on('connection', (socket) => {
         currentUsers[socket.id] = null;
         console.log(currentUsers);
         io.to(socket.id).emit("playerId", socket.id);
+        io.emit('playersCount', Object.values(currentUsers).length);
+    };
+
+    socket.on('startGame', id => {
         io.to(socket.id).emit("welcomeMessage", `
             You are player number ${Object.keys(currentUsers).length}!
             ${selectedColorsCalculate(currentUsers)}
         `);
-        io.to(socket.id).emit("takenColors", Object.values(currentUsers).filter(Boolean));
-        io.emit('playersCount', Object.values(currentUsers).length);
-    };
+        io.to(id).emit("takenColors", Object.values(currentUsers).filter(Boolean));
+    })
 
     socket.on('colorSelected', ({ userId, userColor }) => {
         currentUsers[userId] = userColor;

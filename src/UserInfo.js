@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { socket } from './socket';
 import { startGame } from '../store/game/actions';
 
 const UserInfoStyles = styled.div`
@@ -57,6 +58,7 @@ const UserInfoStyles = styled.div`
 
 const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
     const gameFull = useSelector(state => state.socket?.gameFull);
+    const id = useSelector(state => state.socket?.id);
     const dispatch = useDispatch();
 
     return (
@@ -73,7 +75,10 @@ const UserInfo = ({ color, instructions, welcomeMessage, ready }) => {
                         <p>
                             Once that happens, the first person to hit their square gets the point! Be careful though, if you hit before the light turns red you'll be deducted 1 point! First to 5 points wins the game...
                         </p>
-                        <button id="start" onClick={() => dispatch(startGame())}>
+                        <button id="start" onClick={() => {
+                            socket.emit('startGame', id);
+                            dispatch(startGame());
+                        }}>
                             Start
                         </button>
                     </>
