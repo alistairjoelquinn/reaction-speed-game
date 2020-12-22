@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const conf = {
+const config = {
     entry: ["@babel/polyfill", __dirname + '/src/start.js'],
     output: {
         path: __dirname,
@@ -42,7 +42,7 @@ const conf = {
 };
 
 if (require.main == module) {
-    webpack(conf, function (err, info) {
+    webpack(config, function (err, info) {
         if (err) {
             console.log(err);
         }
@@ -51,7 +51,7 @@ if (require.main == module) {
         }
     });
 } else {
-    module.exports = require('webpack-dev-middleware')(webpack(conf), {
+    module.exports = require('webpack-dev-middleware')(webpack(config), {
         watchOptions: {
             aggregateTimeout: 300
         },

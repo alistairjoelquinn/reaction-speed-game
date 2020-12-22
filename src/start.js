@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
 
 import { init } from './socket';
@@ -16,7 +17,7 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(
-    rootReducer, applyMiddleware(ReduxThunk)
+    rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk))
 );
 
 init(store);

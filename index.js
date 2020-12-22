@@ -42,7 +42,6 @@ let winner;
 let clickWait = false;
 
 io.on('connection', (socket) => {
-    console.log('connected');
     if (Object.keys(currentUsers).length >= 4) {
         io.to(socket.id).emit("game_full", true);
         return;
@@ -53,7 +52,6 @@ io.on('connection', (socket) => {
     };
 
     socket.on('startGame', id => {
-        console.log('running');
         io.to(socket.id).emit("welcomeMessage", `
             You are player number ${Object.keys(currentUsers).length}!
             ${selectedColorsCalculate(currentUsers)}
