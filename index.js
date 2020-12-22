@@ -4,7 +4,7 @@ const compression = require('compression');
 const server = require('http').Server(app);
 const io = require('socket.io')(server, {
     cors: {
-        origin: "*",
+        origin: "reaction-speed-game.herokuapp.com",
         methods: ["GET", "POST"],
         allowedHeaders: ["content-type"],
     }
@@ -39,6 +39,7 @@ let colorScores = {
 };
 let waiting = false;
 let winner;
+let clickWait = false;
 
 io.on('connection', (socket) => {
     console.log('connected');
@@ -71,12 +72,18 @@ io.on('connection', (socket) => {
     });
 
     socket.on('playerPress', (userId) => {
+        if (clickWait === true) {
+            return;
+        }
         if (waiting === true) {
             updateScore(userId);
+            clickWait = true;
+            setTimeout(() => clickWait = false, 1000);
         } else {
             reduceScore(userId);
             return;
         }
+
         winner = winnerCheck();
         if (winner) {
             io.emit('winner', winner);
