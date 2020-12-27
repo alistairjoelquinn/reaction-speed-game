@@ -26,6 +26,13 @@ const MiddleButtonStyles = styled.div`
             color: var(--white);
         }
     }
+    @media (max-width: 500px) and (max-height: 600px) {
+        .circle-button {
+            height: 10rem;
+            width: 10rem;
+            border-radius: 5rem;
+        }
+    }
 `;
 
 const MiddleButton = ({ start }) => {

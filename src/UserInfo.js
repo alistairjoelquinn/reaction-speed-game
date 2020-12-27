@@ -50,6 +50,7 @@ const UserInfoStyles = styled.div`
     }
     @media (max-width: 550px) {
         height: auto;
+        width: 75vw;
     }
     @media (max-height: 550px) {
         button#start {
