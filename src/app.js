@@ -57,6 +57,11 @@ const AppStyles = styled.div`
             font-size: 5rem;
         }
     }
+    @media (max-width: 460px) {
+        div.title {
+            font-size: 3rem;
+        }
+    }
     @media (max-height: 500px) {
         div.title {
             font-size: 4rem;

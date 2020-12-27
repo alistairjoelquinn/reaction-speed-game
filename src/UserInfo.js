@@ -48,11 +48,17 @@ const UserInfoStyles = styled.div`
             width: 100px;
         }
     }
+    @media (max-width: 550px) {
+        height: auto;
+    }
     @media (max-height: 550px) {
         button#start {
             font-size: 1.8rem;
             padding: 5px 0;
         }
+    }
+    @media (max-height: 460px) {
+        height: auto;
     }
 `;
 

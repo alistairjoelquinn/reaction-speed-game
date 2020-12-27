@@ -20,6 +20,12 @@ export const WelcomeMessageStyles = styled.div`
     @media (max-height: 450px) {
         font-size: 3rem;
     }
+    @media (max-width: 860px) {
+        padding-bottom: 30px;
+    }
+    @media (max-width: 550px) {
+        font-size: 3rem;
+    }
 `;
 
 export const GameAreaStyles = styled.div`
