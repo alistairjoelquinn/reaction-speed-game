@@ -95,6 +95,19 @@ export const GameStyles = styled.div`
     @media (max-width: 800px) {
         height: 50vh;
     }
+    @media (max-width: 600px) {
+        width: 75vw;
+    }
+    @media (max-width: 500px) and (max-height: 650px) {
+        .game-item {
+            font-size: 2rem;
+        }
+    }
+    @media (max-width: 400px) and (max-height: 600px) {
+        .game-item {
+            font-size: 1.5rem;
+        }
+    }
 `;
 
 export const DisplayUserInfoStyles = styled.div`
