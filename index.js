@@ -114,7 +114,7 @@ io.on('connection', (socket) => {
     });
 
     const gameInitiate = () => setTimeout(play, 8000);
-    const randomTimeCounter = () => Math.floor(Math.random() * 12000);
+    const randomTimeCounter = () => Math.floor(Math.random() * 20000);
 
     const play = (cancel) => {
         if (cancel) {
