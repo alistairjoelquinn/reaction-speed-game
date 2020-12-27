@@ -59,7 +59,7 @@ const AppStyles = styled.div`
     }
     @media (max-width: 700px) {
         .top {
-            top: 50px;
+            top: 65px;
         }
     }
     @media (max-width: 460px) {
