@@ -30,7 +30,7 @@ When another player has chosen a color it will no longer be possible to choose. 
 
 ![Taken](/assets/md-images/6.png)
 
-When every player has chosen a color, a score counter appears for each player and the game begins. Your color will be outlined in yellow.
+Once every player has chosen a color, a score counter appears for each player and the game begins. Your color will be outlined in yellow.
 
 ![Game Begin](/assets/md-images/8.jpeg)
 
