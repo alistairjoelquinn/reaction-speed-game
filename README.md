@@ -29,3 +29,16 @@ From that point on, your color will be outlined in yellow.
 When another player has chosen a color it will no longer be possible to choose. You will be informed that a color was already chosen.
 
 ![Taken](/assets/md-images/6.png)
+
+When every player has chosen a color, a score counter appears for each player and the game begins.
+
+![Game Begin](/assets/md-images/8.jpeg)
+
+Now every player has to wait for the circle in the middle to turn red.
+
+![Red Circle](/assets/md-images/9.jpeg)
+
+Once it has turned red, the first player to hit their square wins a point.
+
+![Point Win](/assets/md-images/10.jpeg)
+
