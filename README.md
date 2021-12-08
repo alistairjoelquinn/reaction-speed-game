@@ -22,15 +22,15 @@ When you choose a color you will be informed which color you chose with this mes
 
 ![Chosen Color](/assets/md-images/7.jpeg)
 
-From that point on, your color will be outlined in yellow.
+Until the game begins you will be informed which color you chose.
 
-![Outlined Color](/assets/md-images/5.png)
+![your Color](/assets/md-images/5.5.png)
 
 When another player has chosen a color it will no longer be possible to choose. You will be informed that a color was already chosen with the word `TAKEN`.
 
 ![Taken](/assets/md-images/6.png)
 
-When every player has chosen a color, a score counter appears for each player and the game begins.
+When every player has chosen a color, a score counter appears for each player and the game begins. Your color will be outlined in yellow.
 
 ![Game Begin](/assets/md-images/8.jpeg)
 
