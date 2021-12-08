@@ -48,7 +48,7 @@ You have to be careful. Accidentally hitting your color before the circle turns 
 
 Once a player has 5 points, they have won the game and play is over. Players can play again by clicking on the button.
 
-![game Win](/assets/md-images/12.jpeg)
+![Game Win](/assets/md-images/12.png)
 
 The game constantly requires 4 players, if at any point a player leaves the game before it is over then the game is reset and all other remaining players will be returned to the waiting screen.
 
