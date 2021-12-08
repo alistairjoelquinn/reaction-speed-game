@@ -50,6 +50,6 @@ Once a player has 5 points, they have won the game and play is over. Players can
 
 ![Game Win](/assets/md-images/12.png)
 
-The game constantly requires 4 players, if at any point a player leaves the game before it is over then the game is reset and all other remaining players will be returned to the waiting screen.
+The game constantly requires 4 players. If at any point a player leaves the game before it is over then the game is reset and all other remaining players will be returned to the waiting screen.
 
 ![Waiting](/assets/md-images/4.png)
