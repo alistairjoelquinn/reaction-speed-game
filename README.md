@@ -34,11 +34,11 @@ When every player has chosen a color, a score counter appears for each player an
 
 ![Game Begin](/assets/md-images/8.jpeg)
 
-Now every player has to wait for the circle in the middle to turn red.
+Now every player has to wait for the circle in the middle to turn red. It happens at a random time between zero and 20 seconds.
 
 ![Red Circle](/assets/md-images/9.jpeg)
 
-Once it has turned red, the first player to hit their square wins a point.
+Once it has turned red, the first player to hit their square wins a point. Then the process begins again and you need to wait for the circle to turn red.
 
 ![Point Win](/assets/md-images/10.jpeg)
 
