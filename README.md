@@ -10,13 +10,13 @@ After a fourth player has joined, any following attempts to join the game will b
 
 ![No More Room](/assets/md-images/3.png)
 
-After clicking `start` on the welcome message, the user moves to the game screen. Here they can choose which color they wish to be by clicking on it.
-
-![Game Screen](/assets/md-images/2.png)
- 
-Until the fourth player has joined the screen will continue to say you are waiting. The player counter will continue to update as players arrive.
+After clicking `start` on the welcome message, the user moves to the game screen. Until the fourth player has joined the screen will continue to say you are waiting. The player counter will continue to update as players arrive.
 
 ![Waiting](/assets/md-images/4.png)
+
+Here players can choose which color they wish to be by clicking on it.
+
+![Game Screen](/assets/md-images/2.png)
 
 When you choose a color you will be informed which color you chose with this message.
 
